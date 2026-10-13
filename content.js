@@ -77,6 +77,14 @@
       playbackSpeed = v.playbackRate;
       updateUI();
     });
+
+    v.addEventListener('loadedmetadata', () => {
+      updateUI();
+    });
+
+    v.addEventListener('durationchange', () => {
+      updateUI();
+    });
   }
 
   // --- Lógica del Bucle (A-B) ---
@@ -329,8 +337,14 @@
 
           <div class="riffloop-inter-actions">
             <button class="riffloop-inter-btn-toggle" id="riffloop-inter-btn-toggle">Activar</button>
+            <button class="riffloop-view-switch-btn" id="riffloop-inter-btn-expand" title="Cambiar a vista vertical">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="7 15 12 20 17 15"></polyline>
+                <polyline points="7 9 12 4 17 9"></polyline>
+              </svg>
+              <span>↕ Vista Vertical</span>
+            </button>
             <div class="riffloop-header-actions">
-              <button class="riffloop-icon-btn" id="riffloop-inter-btn-expand" title="Ver panel completo">⤢</button>
               <button class="riffloop-icon-btn" id="riffloop-inter-btn-minimize" title="Minimizar a pastilla">─</button>
               <button class="riffloop-icon-btn" id="riffloop-inter-btn-close" title="Ocultar">✕</button>
             </div>
@@ -418,7 +432,13 @@
             <span class="riffloop-title">loop</span>
           </div>
           <div class="riffloop-header-actions">
-            <button class="riffloop-icon-btn" id="riffloop-btn-compact" title="Vista compacta intermedia">⤡</button>
+            <button class="riffloop-view-switch-btn" id="riffloop-btn-compact" title="Cambiar a vista horizontal">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 7 20 12 15 17"></polyline>
+                <polyline points="9 7 4 12 9 17"></polyline>
+              </svg>
+              <span>↔ Vista Horizontal</span>
+            </button>
             <button class="riffloop-icon-btn" id="riffloop-btn-minimize" title="Minimizar">─</button>
             <button class="riffloop-icon-btn" id="riffloop-btn-close" title="Ocultar">✕</button>
           </div>
@@ -626,6 +646,17 @@
       currentViewMode = mode;
       lastActiveViewMode = mode;
     }
+
+    // Asegurar que si el widget fue arrastrado no quede recortado fuera de la pantalla
+    if (overlayEl && overlayEl.style.left && overlayEl.style.left !== 'auto') {
+      const currentLeft = parseFloat(overlayEl.style.left);
+      const targetWidth = mode === 'intermediate' ? 640 : (mode === 'full' ? 360 : 200);
+      const maxLeft = Math.max(10, window.innerWidth - targetWidth - 20);
+      if (currentLeft > maxLeft) {
+        overlayEl.style.left = `${maxLeft}px`;
+      }
+    }
+
     try {
       chrome.storage.local.set({ riffloop_view_mode: mode });
     } catch (e) {}
@@ -719,12 +750,30 @@
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
 
-      target.style.left = `${Math.max(10, Math.min(window.innerWidth - 120, initialLeft + dx))}px`;
-      target.style.top = `${Math.max(10, Math.min(window.innerHeight - 80, initialTop + dy))}px`;
+      const w = target.offsetWidth || (currentViewMode === 'intermediate' ? 640 : 360);
+      const h = target.offsetHeight || 200;
+      const minX = 10;
+      const maxX = Math.max(minX, window.innerWidth - w - 10);
+      const minY = 10;
+      const maxY = Math.max(minY, window.innerHeight - h - 10);
+
+      target.style.left = `${Math.max(minX, Math.min(maxX, initialLeft + dx))}px`;
+      target.style.top = `${Math.max(minY, Math.min(maxY, initialTop + dy))}px`;
     });
 
     window.addEventListener('mouseup', () => {
       isDragging = false;
+    });
+
+    window.addEventListener('resize', () => {
+      if (target.style.left && target.style.left !== 'auto') {
+        const curLeft = parseFloat(target.style.left);
+        const w = target.offsetWidth || (currentViewMode === 'intermediate' ? 640 : 360);
+        const maxL = Math.max(10, window.innerWidth - w - 10);
+        if (curLeft > maxL) {
+          target.style.left = `${maxL}px`;
+        }
+      }
     });
   }
 

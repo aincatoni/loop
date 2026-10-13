@@ -642,7 +642,8 @@
   -webkit-backdrop-filter: blur(var(--loop-blur)) saturate(200%) brightness(105%);
   border: 1px solid var(--loop-glass-border);
   border-radius: 20px;
-  width: min(580px, calc(100vw - 32px));
+  width: min(640px, calc(100vw - 32px));
+  max-width: calc(100vw - 24px);
   box-shadow: var(--loop-glass-shadow), var(--loop-glass-shine);
   padding: 16px 20px;
   display: flex;
@@ -657,6 +658,7 @@
   justify-content: space-between;
   cursor: grab;
   user-select: none;
+  gap: 12px;
 }
 
 .riffloop-inter-header:active {
@@ -667,6 +669,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .riffloop-status-pill {
@@ -707,7 +710,8 @@
 .riffloop-inter-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .riffloop-inter-btn-toggle {
@@ -734,10 +738,46 @@
   color: var(--loop-accent-mint);
 }
 
+/* Botón de alternancia de vista (Horizontal <-> Vertical) */
+.riffloop-view-switch-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--loop-text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--loop-glass-shine);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  font-family: inherit;
+}
+
+.riffloop-view-switch-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.riffloop-view-switch-btn:active {
+  transform: scale(0.97);
+}
+
+.riffloop-view-switch-btn svg {
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
 /* Tarjetas A y B en fila */
 .riffloop-inter-ab-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 12px;
   margin-top: 14px;
 }
@@ -746,8 +786,11 @@
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--loop-glass-border-subtle);
   border-radius: 12px;
-  padding: 10px 14px;
+  padding: 10px 12px;
   transition: border-color 0.2s ease;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .riffloop-inter-card.has-point {
@@ -759,22 +802,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2px;
 }
 
 .riffloop-inter-label {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--loop-text-tertiary);
+  white-space: nowrap;
 }
 
 .riffloop-inter-tag {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--loop-accent-cyan);
+  white-space: nowrap;
 }
 
 #riffloop-inter-card-b .riffloop-inter-tag {
@@ -786,20 +832,24 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 6px;
-  gap: 8px;
+  gap: 6px;
+  min-width: 0;
 }
 
 .riffloop-inter-time {
-  font-family: ui-monospace, "SF Mono", monospace;
-  font-size: 18px;
-  font-weight: 800;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 16px;
+  font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 
 .riffloop-inter-nudges {
   display: flex;
-  gap: 3px;
+  gap: 2.5px;
+  flex-shrink: 0;
 }
 
 .riffloop-inter-nudge {
@@ -807,12 +857,14 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   color: var(--loop-text-secondary);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
-  padding: 3px 6px;
+  padding: 2.5px 5px;
   cursor: pointer;
   transition: all 0.15s ease;
   font-family: ui-monospace, "SF Mono", monospace;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .riffloop-inter-nudge:hover {
@@ -825,11 +877,12 @@
   border: 1px solid rgba(0, 242, 254, 0.3);
   color: var(--loop-accent-cyan);
   border-radius: 6px;
-  padding: 3px 10px;
+  padding: 3px 8px;
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .riffloop-inter-set-btn:hover {
