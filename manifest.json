@@ -5,7 +5,17 @@
   "description": "Crea bucles A-B precisos, ajusta la velocidad y guarda secciones para practicar guitarra, batería y cualquier instrumento en YouTube.",
   "action": {
     "default_popup": "popup.html",
-    "default_title": "loop"
+    "default_title": "loop",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
   "content_scripts": [
     {

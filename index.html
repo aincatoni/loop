@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>loop — Practica canciones en YouTube con bucles A-B precisos</title>
+  <meta name="description" content="Extensión de Chrome para músicos: crea bucles A-B exactos, ajusta la velocidad sin perder afinación, guarda secciones y practica manos libres con pedaleras o atajos.">
+  <meta property="og:title" content="loop — Domina cada riff, solo y compás en YouTube">
+  <meta property="og:description" content="Crea bucles A-B precisos, ajusta la velocidad y guarda secciones para practicar guitarra, batería o cualquier instrumento.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="icons/icon-48.png">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#" class="brand-link">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a0c13" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 2l4 4-4 4"/>
+            <path d="M3 11v-1a4 4 0 0 1 4-4h14"/>
+            <path d="M7 22l-4-4 4-4"/>
+            <path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+          </svg>
+        </div>
+        <span>loop</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features">Funciones</a></li>
+        <li><a href="#demo">Demo Interactiva</a></li>
+        <li><a href="#shortcuts">Atajos y Pedal</a></li>
+        <li><a href="#install">Instalación</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://github.com/aincatoni/loop" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="#install" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Instalar Gratis
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="pulse-dot"></span>
+        v1.0.0 • Extensión de Chrome para Músicos
+      </div>
+
+      <h1>
+        Domina cada riff, solo y compás en <span class="gradient-text">YouTube</span>.
+      </h1>
+
+      <p>
+        Diseñado especialmente para guitarristas, bateristas, bajistas y tecladistas.
+        Crea bucles A-B precisos, baja la velocidad sin perder afinación, guarda tus secciones por canción y practica manos libres con pedaleras o atajos de teclado.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#install" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          Comenzar a Practicar
+        </a>
+        <a href="https://github.com/aincatoni/loop/archive/refs/heads/main.zip" class="btn btn-secondary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Descargar Código (.zip)
+        </a>
+      </div>
+
+      <div class="clone-box">
+        <span>$ git clone https://github.com/aincatoni/loop.git</span>
+        <button class="clone-btn copy-cmd-btn" data-clipboard="git clone https://github.com/aincatoni/loop.git">
+          Copiar
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo / Showcase Section -->
+  <section class="container" id="demo">
+    <div class="showcase">
+      <div class="mockup-header">
+        <div class="window-dots">
+          <span class="dot-red"></span>
+          <span class="dot-yellow"></span>
+          <span class="dot-green"></span>
+        </div>
+        <div class="mockup-url">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          youtube.com/watch?v=guitar-lesson-masterclass
+        </div>
+        <div style="width: 50px;"></div>
+      </div>
+
+      <div class="mockup-canvas">
+        <div class="mockup-video-bg">
+          <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </div>
+
+        <div class="mockup-video-title">
+          <span class="yt-badge">YouTube</span>
+          <span class="yt-title">Sultans of Swing — Solo 2 Breakdown & Tabs</span>
+        </div>
+
+        <!-- The Floating Looper Interface -->
+        <div class="mockup-overlay-looper">
+          <div class="looper-top-bar">
+            <div class="looper-brand-pill">
+              <span style="color: var(--accent-cyan); font-size: 1.1rem;">🔁</span>
+              <span>loop</span>
+              <span class="status-badge mockup-status-badge">● Bucle Activo</span>
+            </div>
+            <button class="btn btn-secondary mockup-toggle-loop" style="padding: 4px 12px; font-size: 0.8rem;">
+              Desactivar
+            </button>
+          </div>
+
+          <!-- A / B Points with Micro-adjusters -->
+          <div class="ab-grid">
+            <div class="ab-card">
+              <div class="ab-card-label">
+                <span>Punto A (Inicio)</span>
+                <span style="color: var(--accent-cyan);">Compás 1</span>
+              </div>
+              <div class="ab-time-row">
+                <span class="ab-time mockup-time-a">01:24.3</span>
+                <div class="micro-btn-group">
+                  <button class="micro-btn mockup-adj" data-target="A" data-delta="-0.5">-0.5s</button>
+                  <button class="micro-btn mockup-adj" data-target="A" data-delta="-0.1">-0.1s</button>
+                  <button class="micro-btn mockup-adj" data-target="A" data-delta="0.1">+0.1s</button>
+                  <button class="micro-btn mockup-adj" data-target="A" data-delta="0.5">+0.5s</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ab-card">
+              <div class="ab-card-label">
+                <span>Punto B (Final)</span>
+                <span style="color: var(--accent-mint);">Salida</span>
+              </div>
+              <div class="ab-time-row">
+                <span class="ab-time mockup-time-b">01:38.8</span>
+                <div class="micro-btn-group">
+                  <button class="micro-btn mockup-adj" data-target="B" data-delta="-0.5">-0.5s</button>
+                  <button class="micro-btn mockup-adj" data-target="B" data-delta="-0.1">-0.1s</button>
+                  <button class="micro-btn mockup-adj" data-target="B" data-delta="0.1">+0.1s</button>
+                  <button class="micro-btn mockup-adj" data-target="B" data-delta="0.5">+0.5s</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Track Bar -->
+          <div class="looper-track-wrap">
+            <div class="looper-track">
+              <div class="looper-active-span"></div>
+              <div class="looper-playhead"></div>
+            </div>
+          </div>
+
+          <!-- Tempo Controls -->
+          <div class="tempo-row">
+            <div class="tempo-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Velocidad de estudio:</span>
+            </div>
+            <div class="tempo-presets">
+              <button class="tempo-pill mockup-tempo-pill" data-speed="0.50">0.5x</button>
+              <button class="tempo-pill mockup-tempo-pill" data-speed="0.75">0.75x</button>
+              <button class="tempo-pill mockup-tempo-pill active" data-speed="0.85">0.85x</button>
+              <button class="tempo-pill mockup-tempo-pill" data-speed="1.00">1.0x</button>
+            </div>
+          </div>
+
+          <!-- Saved Sections Quick Selector -->
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+            <span style="font-size: 0.78rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 600;">Secciones guardadas:</span>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="micro-btn mockup-section-item" data-a="15.0" data-b="32.5">🎸 Intro Riff</button>
+              <button class="micro-btn mockup-section-item selected" data-a="84.3" data-b="98.8" style="border-color: var(--accent-cyan); color: #fff;">⚡ Solo Rápido</button>
+              <button class="micro-btn mockup-section-item" data-a="130.0" data-b="142.2">🥁 Fill Final</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Todo lo que necesitas para ensayar</div>
+        <h2>Construido por músicos, para músicos</h2>
+        <p>Olvídate de hacer clic manualmente en la barra de YouTube para retroceder cada 10 segundos.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="22" y1="12" x2="18" y2="12"></line>
+              <line x1="6" y1="12" x2="2" y2="12"></line>
+              <line x1="12" y1="6" x2="12" y2="2"></line>
+              <line x1="12" y1="22" x2="12" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Marcado A-B con Micro-Ajuste</h3>
+          <p>
+            Fija el inicio (A) y el final (B) de cualquier frase musical. Con los botones de micro-ajuste de ±0.1s y ±0.5s puedes sincronizar el compás milimétricamente en el golpe de púa o bombo exacto.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3>Entrenador de Tempo (Pitch Lock)</h3>
+          <p>
+            Baja la velocidad a 0.5x, 0.75x o 0.85x para sacar pasajes rápidos nota por nota. YouTube preserva la afinación original del audio automáticamente sin distorsión tonal ni cambios de afinación.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h3>Biblioteca de Secciones por Video</h3>
+          <p>
+            Guarda partes clave de la canción (Intro, Verso, Estribillo, Solo). Quedan memorizadas en tu navegador asociadas al video de YouTube para que retomes tus prácticas cuando vuelvas mañana.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <line x1="6" y1="8" x2="6" y2="8"></line>
+              <line x1="10" y1="8" x2="10" y2="8"></line>
+              <line x1="14" y1="8" x2="14" y2="8"></line>
+              <line x1="18" y1="8" x2="18" y2="8"></line>
+            </svg>
+          </div>
+          <h3>Control con Pedal y Atajos</h3>
+          <p>
+            No sueltes las baquetas ni la púa: compatible con pedaleras Bluetooth/USB como M-VAVE Chocolate (tecla F13) y atajos de teclado globales (<code>⌥ + L</code>) con ciclo inteligente en 1 botón.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+          </div>
+          <h3>Panel Flotante y Minimizable</h3>
+          <p>
+            Diseño oscuro translúcido estilo plugin de audio. Puedes arrastrar el panel por la pantalla o colapsarlo en una pequeña pastilla flotante que no estorba la visualización del video.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>100% Privado y Local</h3>
+          <p>
+            Cero telemetría, cero servidores externos, sin registros ni publicidad. Todo el guardado vive exclusivamente en el almacenamiento local de tu propio navegador Chrome.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hands-free & Shortcuts Section -->
+  <section class="section shortcuts-section" id="shortcuts">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Practica con las manos en tu instrumento</div>
+        <h2>Atajos de teclado y pedaleras</h2>
+        <p>Configurado para que no tengas que estirar la mano hacia el trackpad o ratón mientras tocas.</p>
+      </div>
+
+      <div class="shortcuts-grid">
+        <div class="shortcut-item">
+          <div class="shortcut-info">
+            <span class="shortcut-title">Ciclo Inteligente (1 Tecla / Pedal)</span>
+            <span class="shortcut-desc">1º: Marca A &rarr; 2º: Marca B y bucle &rarr; 3º: Limpia bucle</span>
+          </div>
+          <span class="keycap">⌥ + L &nbsp;/&nbsp; F13</span>
+        </div>
+
+        <div class="shortcut-item">
+          <div class="shortcut-info">
+            <span class="shortcut-title">Fijar Punto A</span>
+            <span class="shortcut-desc">Marca el inicio del bucle en el segundo actual</span>
+          </div>
+          <span class="keycap">[</span>
+        </div>
+
+        <div class="shortcut-item">
+          <div class="shortcut-info">
+            <span class="shortcut-title">Fijar Punto B</span>
+            <span class="shortcut-desc">Marca el final y activa la repetición</span>
+          </div>
+          <span class="keycap">]</span>
+        </div>
+
+        <div class="shortcut-item">
+          <div class="shortcut-info">
+            <span class="shortcut-title">Alternar Bucle (ON / OFF)</span>
+            <span class="shortcut-desc">Activa o pausa la repetición del loop</span>
+          </div>
+          <span class="keycap">\</span>
+        </div>
+
+        <div class="shortcut-item">
+          <div class="shortcut-info">
+            <span class="shortcut-title">Saltar al Inicio del Bucle</span>
+            <span class="shortcut-desc">Vuelve instantáneamente al Punto A</span>
+          </div>
+          <span class="keycap">Shift + [</span>
+        </div>
+
+        <div class="shortcut-item">
+          <div class="shortcut-info">
+            <span class="shortcut-title">Limpiar Bucle</span>
+            <span class="shortcut-desc">Borra los puntos A y B activos</span>
+          </div>
+          <span class="keycap">Shift + X</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Guide Section -->
+  <section class="section" id="install">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Instalación en 1 minuto</div>
+        <h2>Cómo instalar loop en Google Chrome</h2>
+        <p>Actualmente disponible para cargar de forma rápida y gratuita en Modo Desarrollador.</p>
+      </div>
+
+      <div class="steps-wrap">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Obtén el proyecto</h3>
+          <p>Clona el repositorio desde GitHub o descarga el código fuente comprimido en tu ordenador.</p>
+          <div class="code-snippet">
+            <span>git clone https://github.com/aincatoni/loop.git</span>
+            <button class="clone-btn copy-cmd-btn" data-clipboard="git clone https://github.com/aincatoni/loop.git">Copiar</button>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Abre chrome://extensions</h3>
+          <p>
+            En la barra de direcciones de Google Chrome ingresa <code>chrome://extensions</code> y activa la casilla <strong>Modo de desarrollador</strong> en la esquina superior derecha.
+          </p>
+          <div class="code-snippet">
+            <span>chrome://extensions</span>
+            <button class="clone-btn copy-cmd-btn" data-clipboard="chrome://extensions">Copiar</button>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Cargar descomprimida</h3>
+          <p>
+            Haz clic en el botón <strong>Cargar descomprimida</strong> (arriba a la izquierda) y selecciona la carpeta <code>loop</code>. ¡Listo! Abre YouTube o recarga la pestaña con <code>Cmd+R</code>.
+          </p>
+          <a href="https://github.com/aincatoni/loop/archive/refs/heads/main.zip" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+            Descargar ZIP (.zip)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="#features">Funciones</a>
+        <a href="#demo">Demo</a>
+        <a href="#shortcuts">Atajos</a>
+        <a href="#install">Instalación</a>
+        <a href="https://github.com/aincatoni/loop" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+      </div>
+      <p>
+        <strong>loop</strong> es un proyecto libre y de código abierto desarrollado para que practicar canciones sea más fácil e intuitivo.
+      </p>
+      <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.6;">
+        Desplegado en GitHub Pages con GitHub Actions &bull; Cero rastreo &bull; 100% Local
+      </p>
+    </div>
+  </footer>
+
+  <script src="landing.js"></script>
+</body>
+</html>

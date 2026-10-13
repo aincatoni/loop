@@ -1,5 +1,7 @@
 # 🔁 loop — Extensión para loopear y practicar canciones en YouTube
 
+> 🌐 **Landing Page Oficial:** [https://aincatoni.github.io/loop/](https://aincatoni.github.io/loop/)
+
 **loop** es una extensión de Google Chrome diseñada para músicos. Te permite crear bucles (loops) de secciones exactas de cualquier video de YouTube, ajustar la velocidad con precisión y guardar partes clave de las canciones (solos, fills, riffs) para practicar con tu instrumento (guitarra, batería, bajo, teclado, etc.).
 
 ---
