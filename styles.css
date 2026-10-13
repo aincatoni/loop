@@ -632,3 +632,371 @@
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
+
+/* ==========================================================================
+   Vista Intermedia: Stage Card / Practice Mode (macOS Liquid Glass)
+   ========================================================================== */
+.riffloop-intermediate {
+  background: var(--loop-glass-bg);
+  backdrop-filter: blur(var(--loop-blur)) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(var(--loop-blur)) saturate(200%) brightness(105%);
+  border: 1px solid var(--loop-glass-border);
+  border-radius: 20px;
+  width: min(580px, calc(100vw - 32px));
+  box-shadow: var(--loop-glass-shadow), var(--loop-glass-shine);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.riffloop-inter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+  user-select: none;
+}
+
+.riffloop-inter-header:active {
+  cursor: grabbing;
+}
+
+.riffloop-inter-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.riffloop-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--loop-text-tertiary);
+  transition: all 0.25s ease;
+}
+
+.riffloop-status-pill.active {
+  background: rgba(5, 223, 158, 0.14);
+  border-color: rgba(5, 223, 158, 0.35);
+  color: var(--loop-accent-mint);
+}
+
+.riffloop-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.25s ease;
+}
+
+.riffloop-status-pill.active .riffloop-status-dot {
+  background: var(--loop-accent-mint);
+  box-shadow: 0 0 8px var(--loop-accent-mint);
+}
+
+.riffloop-inter-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.riffloop-inter-btn-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--loop-glass-shine);
+}
+
+.riffloop-inter-btn-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.riffloop-inter-btn-toggle.active {
+  background: rgba(5, 223, 158, 0.2);
+  border-color: var(--loop-accent-mint);
+  color: var(--loop-accent-mint);
+}
+
+/* Tarjetas A y B en fila */
+.riffloop-inter-ab-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.riffloop-inter-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--loop-glass-border-subtle);
+  border-radius: 12px;
+  padding: 10px 14px;
+  transition: border-color 0.2s ease;
+}
+
+.riffloop-inter-card.has-point {
+  border-color: rgba(0, 242, 254, 0.28);
+  background: rgba(0, 242, 254, 0.03);
+}
+
+.riffloop-inter-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.riffloop-inter-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--loop-text-tertiary);
+}
+
+.riffloop-inter-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--loop-accent-cyan);
+}
+
+#riffloop-inter-card-b .riffloop-inter-tag {
+  color: var(--loop-accent-mint);
+}
+
+.riffloop-inter-time-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  gap: 8px;
+}
+
+.riffloop-inter-time {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.riffloop-inter-nudges {
+  display: flex;
+  gap: 3px;
+}
+
+.riffloop-inter-nudge {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: var(--loop-text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: ui-monospace, "SF Mono", monospace;
+}
+
+.riffloop-inter-nudge:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.riffloop-inter-set-btn {
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  color: var(--loop-accent-cyan);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.riffloop-inter-set-btn:hover {
+  background: rgba(0, 242, 254, 0.24);
+  color: #ffffff;
+}
+
+/* Barra de progreso interactiva */
+.riffloop-inter-track-wrap {
+  margin: 14px 0 12px;
+}
+
+.riffloop-inter-track {
+  position: relative;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.riffloop-inter-loop-span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, var(--loop-accent-cyan) 0%, var(--loop-accent-mint) 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+  display: none;
+}
+
+.riffloop-inter-playhead {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 4px;
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 0 8px #ffffff;
+  transform: translateX(-50%);
+  pointer-events: none;
+  left: 0%;
+  transition: left 0.1s linear;
+}
+
+/* Fila de velocidad / tempo */
+.riffloop-inter-tempo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--loop-glass-border-subtle);
+}
+
+.riffloop-inter-tempo-label {
+  font-size: 12px;
+  color: var(--loop-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.riffloop-inter-tempo-presets {
+  display: flex;
+  gap: 6px;
+}
+
+.riffloop-inter-speed-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  color: var(--loop-text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.riffloop-inter-speed-pill:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.riffloop-inter-speed-pill.active {
+  background: var(--loop-accent-cyan);
+  color: #080a10;
+  border-color: var(--loop-accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+}
+
+/* Fila de secciones guardadas */
+.riffloop-inter-sections-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--loop-glass-border-subtle);
+}
+
+.riffloop-inter-sections-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--loop-text-tertiary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.riffloop-inter-sections-pills {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+  align-items: center;
+}
+
+.riffloop-inter-sections-pills::-webkit-scrollbar {
+  display: none;
+}
+
+.riffloop-inter-section-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--loop-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.riffloop-inter-section-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.riffloop-inter-section-pill.selected {
+  background: rgba(0, 242, 254, 0.14);
+  border-color: var(--loop-accent-cyan);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+}
+
+.riffloop-inter-add-section-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--loop-accent-mint);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.riffloop-inter-add-section-btn:hover {
+  background: rgba(5, 223, 158, 0.2);
+  border-color: var(--loop-accent-mint);
+  transform: scale(1.08);
+}

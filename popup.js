@@ -97,5 +97,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     await sendTabMessage({ action: 'TOGGLE_OVERLAY_VISIBILITY' });
   });
 
+  const btnSwitchMode = document.getElementById('btn-switch-mode');
+  if (btnSwitchMode) {
+    btnSwitchMode.addEventListener('click', async () => {
+      const res = await sendTabMessage({ action: 'GET_STATE' });
+      if (res) {
+        const nextMode = res.viewMode === 'intermediate' ? 'full' : 'intermediate';
+        await sendTabMessage({ action: 'SET_VIEW_MODE', mode: nextMode });
+        await refreshState();
+      }
+    });
+  }
+
   await refreshState();
 });

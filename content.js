@@ -18,22 +18,27 @@
   let isLooping = false;
   let playbackSpeed = 1.0;
   let isMinimized = false;
+  let currentViewMode = 'intermediate'; // 'minimized' | 'intermediate' | 'full'
+  let lastActiveViewMode = 'intermediate';
   let preRollSeconds = 0;
   let savedLoops = [];
 
   // --- Elementos del DOM del Widget ---
   let overlayEl = null;
 
-  // --- Formateador de tiempo (mm:ss.SS) ---
-  function formatTime(seconds) {
-    if (seconds === null || seconds === undefined || isNaN(seconds)) return '--:--.--';
+  // --- Formateador de tiempo (mm:ss.S o mm:ss.SS) ---
+  function formatTime(seconds, decimals = 2) {
+    if (seconds === null || seconds === undefined || isNaN(seconds)) {
+      return decimals === 1 ? '--:--.-' : '--:--.--';
+    }
     const totalSecs = Math.max(0, seconds);
     const m = Math.floor(totalSecs / 60);
     const s = Math.floor(totalSecs % 60);
-    const ms = Math.floor((totalSecs % 1) * 100);
+    const frac = Math.floor((totalSecs % 1) * Math.pow(10, decimals));
 
     const pad = (num, digits = 2) => String(num).padStart(digits, '0');
-    return `${pad(m)}:${pad(s)}.${pad(ms)}`;
+    const fracStr = String(frac).padStart(decimals, '0');
+    return `${pad(m)}:${pad(s)}.${fracStr}`;
   }
 
   // --- Obtener video activo en YouTube ---
@@ -58,9 +63,13 @@
     v._riffLoopHooked = true;
 
     v.addEventListener('timeupdate', () => {
-      if (!isLooping || pointA === null || pointB === null) return;
-      if (v.currentTime >= pointB) {
-        v.currentTime = Math.max(0, pointA - preRollSeconds);
+      if (isLooping && pointA !== null && pointB !== null) {
+        if (v.currentTime >= pointB) {
+          v.currentTime = Math.max(0, pointA - preRollSeconds);
+        }
+      }
+      if (currentViewMode === 'intermediate' && !isMinimized) {
+        updateInterPlayhead(v);
       }
     });
 
@@ -304,14 +313,112 @@
         <span class="riffloop-mini-info" id="riffloop-min-info">A-B Inactivo</span>
       </div>
 
-      <!-- Panel Expandido -->
-      <div class="riffloop-panel" id="riffloop-full-view">
+      <!-- Vista Intermedia (Practice Stage Card) -->
+      <div class="riffloop-intermediate" id="riffloop-intermediate-view">
+        <div class="riffloop-inter-header" id="riffloop-inter-drag-handle">
+          <div class="riffloop-inter-brand-wrap">
+            <div class="riffloop-brand">
+              <span class="riffloop-logo">🔁</span>
+              <span class="riffloop-title">loop</span>
+            </div>
+            <div class="riffloop-status-pill" id="riffloop-inter-status-pill">
+              <span class="riffloop-status-dot"></span>
+              <span id="riffloop-inter-status-text">BUCLE INACTIVO</span>
+            </div>
+          </div>
+
+          <div class="riffloop-inter-actions">
+            <button class="riffloop-inter-btn-toggle" id="riffloop-inter-btn-toggle">Activar</button>
+            <div class="riffloop-header-actions">
+              <button class="riffloop-icon-btn" id="riffloop-inter-btn-expand" title="Ver panel completo">⤢</button>
+              <button class="riffloop-icon-btn" id="riffloop-inter-btn-minimize" title="Minimizar a pastilla">─</button>
+              <button class="riffloop-icon-btn" id="riffloop-inter-btn-close" title="Ocultar">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="riffloop-inter-ab-row">
+          <!-- Punto A -->
+          <div class="riffloop-inter-card" id="riffloop-inter-card-a">
+            <div class="riffloop-inter-card-top">
+              <span class="riffloop-inter-label">PUNTO A (INICIO)</span>
+              <span class="riffloop-inter-tag" id="riffloop-inter-tag-a">COMPÁS 1</span>
+            </div>
+            <div class="riffloop-inter-time-row">
+              <span class="riffloop-inter-time" id="riffloop-inter-time-a">--:--.-</span>
+              <button class="riffloop-inter-set-btn" id="riffloop-inter-btn-set-a">Fijar A</button>
+              <div class="riffloop-inter-nudges" id="riffloop-inter-nudges-a">
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-a-minus2">-0.5s</button>
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-a-minus1">-0.1s</button>
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-a-plus1">+0.1s</button>
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-a-plus2">+0.5s</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Punto B -->
+          <div class="riffloop-inter-card" id="riffloop-inter-card-b">
+            <div class="riffloop-inter-card-top">
+              <span class="riffloop-inter-label">PUNTO B (FINAL)</span>
+              <span class="riffloop-inter-tag" id="riffloop-inter-tag-b">SALIDA</span>
+            </div>
+            <div class="riffloop-inter-time-row">
+              <span class="riffloop-inter-time" id="riffloop-inter-time-b">--:--.-</span>
+              <button class="riffloop-inter-set-btn" id="riffloop-inter-btn-set-b">Fijar B</button>
+              <div class="riffloop-inter-nudges" id="riffloop-inter-nudges-b">
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-b-minus2">-0.5s</button>
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-b-minus1">-0.1s</button>
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-b-plus1">+0.1s</button>
+                <button class="riffloop-inter-nudge" id="riffloop-inter-nudge-b-plus2">+0.5s</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de progreso interactiva -->
+        <div class="riffloop-inter-track-wrap" id="riffloop-inter-track-wrap" title="Clic para saltar en la pista">
+          <div class="riffloop-inter-track" id="riffloop-inter-track">
+            <div class="riffloop-inter-loop-span" id="riffloop-inter-loop-span"></div>
+            <div class="riffloop-inter-playhead" id="riffloop-inter-playhead"></div>
+          </div>
+        </div>
+
+        <!-- Fila de Tempo -->
+        <div class="riffloop-inter-tempo-row">
+          <div class="riffloop-inter-tempo-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Velocidad de estudio:</span>
+          </div>
+          <div class="riffloop-inter-tempo-presets">
+            <button class="riffloop-inter-speed-pill" data-speed="0.5">0.5x</button>
+            <button class="riffloop-inter-speed-pill" data-speed="0.75">0.75x</button>
+            <button class="riffloop-inter-speed-pill" data-speed="0.85">0.85x</button>
+            <button class="riffloop-inter-speed-pill" data-speed="1.0">1.0x</button>
+          </div>
+        </div>
+
+        <!-- Fila de Secciones Guardadas -->
+        <div class="riffloop-inter-sections-row">
+          <span class="riffloop-inter-sections-title">SECCIONES GUARDADAS:</span>
+          <div class="riffloop-inter-sections-pills" id="riffloop-inter-sections-list">
+            <!-- Píldoras inyectadas -->
+          </div>
+          <button class="riffloop-inter-add-section-btn" id="riffloop-inter-add-section-btn" title="Guardar bucle actual">+</button>
+        </div>
+      </div>
+
+      <!-- Panel Expandido Studio -->
+      <div class="riffloop-panel" id="riffloop-full-view" style="display: none;">
         <div class="riffloop-header" id="riffloop-drag-handle">
           <div class="riffloop-brand">
             <span class="riffloop-logo">🔁</span>
             <span class="riffloop-title">loop</span>
           </div>
           <div class="riffloop-header-actions">
+            <button class="riffloop-icon-btn" id="riffloop-btn-compact" title="Vista compacta intermedia">⤡</button>
             <button class="riffloop-icon-btn" id="riffloop-btn-minimize" title="Minimizar">─</button>
             <button class="riffloop-icon-btn" id="riffloop-btn-close" title="Ocultar">✕</button>
           </div>
@@ -400,44 +507,91 @@
   }
 
   // --- Eventos de Interacción del Widget ---
+  // --- Eventos de Interacción del Widget ---
   function attachWidgetEvents() {
-    // Minimizar / Expandir
-    document.getElementById('riffloop-btn-minimize').addEventListener('click', () => {
-      isMinimized = true;
-      updateUI();
-    });
-
-    document.getElementById('riffloop-min-view').addEventListener('click', () => {
-      isMinimized = false;
-      updateUI();
-    });
-
+    // 1. Alternar Modos de Vista
+    document.getElementById('riffloop-btn-compact').addEventListener('click', () => setViewMode('intermediate'));
+    document.getElementById('riffloop-btn-minimize').addEventListener('click', () => setViewMode('minimized'));
+    document.getElementById('riffloop-min-view').addEventListener('click', () => setViewMode(lastActiveViewMode || 'intermediate'));
     document.getElementById('riffloop-btn-close').addEventListener('click', () => {
       overlayEl.style.display = 'none';
     });
 
-    // Fijar A y B
+    // 2. Vista Intermedia Eventos
+    document.getElementById('riffloop-inter-btn-expand').addEventListener('click', () => setViewMode('full'));
+    document.getElementById('riffloop-inter-btn-minimize').addEventListener('click', () => setViewMode('minimized'));
+    document.getElementById('riffloop-inter-btn-close').addEventListener('click', () => {
+      overlayEl.style.display = 'none';
+    });
+    document.getElementById('riffloop-inter-btn-toggle').addEventListener('click', toggleLoop);
+
+    document.getElementById('riffloop-inter-btn-set-a').addEventListener('click', () => setPointA());
+    document.getElementById('riffloop-inter-btn-set-b').addEventListener('click', () => setPointB());
+    document.getElementById('riffloop-inter-card-a').addEventListener('click', (e) => {
+      if (!e.target.closest('button')) setPointA();
+    });
+    document.getElementById('riffloop-inter-card-b').addEventListener('click', (e) => {
+      if (!e.target.closest('button')) setPointB();
+    });
+
+    document.getElementById('riffloop-inter-nudge-a-minus2').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('A', -0.5); });
+    document.getElementById('riffloop-inter-nudge-a-minus1').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('A', -0.1); });
+    document.getElementById('riffloop-inter-nudge-a-plus1').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('A', 0.1); });
+    document.getElementById('riffloop-inter-nudge-a-plus2').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('A', 0.5); });
+
+    document.getElementById('riffloop-inter-nudge-b-minus2').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('B', -0.5); });
+    document.getElementById('riffloop-inter-nudge-b-minus1').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('B', -0.1); });
+    document.getElementById('riffloop-inter-nudge-b-plus1').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('B', 0.1); });
+    document.getElementById('riffloop-inter-nudge-b-plus2').addEventListener('click', (e) => { e.stopPropagation(); nudgePoint('B', 0.5); });
+
+    document.querySelectorAll('.riffloop-inter-speed-pill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const speed = parseFloat(e.target.dataset.speed);
+        setSpeed(speed);
+      });
+    });
+
+    const interTrack = document.getElementById('riffloop-inter-track');
+    if (interTrack) {
+      interTrack.addEventListener('click', (e) => {
+        const v = getVideo();
+        if (!v || !v.duration) return;
+        const rect = interTrack.getBoundingClientRect();
+        const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        v.currentTime = ratio * v.duration;
+      });
+    }
+
+    document.getElementById('riffloop-inter-add-section-btn').addEventListener('click', () => {
+      if (pointA === null || pointB === null) {
+        alert('Fija primero el Punto A y el Punto B para guardar esta sección.');
+        return;
+      }
+      const defaultName = `Sección ${savedLoops.length + 1}`;
+      const name = prompt('Nombre para esta sección musical:', defaultName);
+      if (name && name.trim()) {
+        saveCurrentSection(name.trim());
+      }
+    });
+
+    // 3. Panel Completo Eventos
     document.getElementById('riffloop-btn-set-a').addEventListener('click', () => setPointA());
     document.getElementById('riffloop-btn-set-b').addEventListener('click', () => setPointB());
 
-    // Nudge A
     document.getElementById('riffloop-nudge-a-minus2').addEventListener('click', () => nudgePoint('A', -0.5));
     document.getElementById('riffloop-nudge-a-minus1').addEventListener('click', () => nudgePoint('A', -0.1));
     document.getElementById('riffloop-nudge-a-plus1').addEventListener('click', () => nudgePoint('A', 0.1));
     document.getElementById('riffloop-nudge-a-plus2').addEventListener('click', () => nudgePoint('A', 0.5));
 
-    // Nudge B
     document.getElementById('riffloop-nudge-b-minus2').addEventListener('click', () => nudgePoint('B', -0.5));
     document.getElementById('riffloop-nudge-b-minus1').addEventListener('click', () => nudgePoint('B', -0.1));
     document.getElementById('riffloop-nudge-b-plus1').addEventListener('click', () => nudgePoint('B', 0.1));
     document.getElementById('riffloop-nudge-b-plus2').addEventListener('click', () => nudgePoint('B', 0.5));
 
-    // Toggle, Jump y Clear
     document.getElementById('riffloop-btn-toggle').addEventListener('click', toggleLoop);
     document.getElementById('riffloop-btn-jump-a').addEventListener('click', jumpToA);
     document.getElementById('riffloop-btn-clear').addEventListener('click', clearLoop);
 
-    // Velocidades preestablecidas
     document.querySelectorAll('.riffloop-speed-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const speed = parseFloat(e.target.dataset.speed);
@@ -445,14 +599,12 @@
       });
     });
 
-    // Slider de velocidad
     const slider = document.getElementById('riffloop-speed-slider');
     slider.addEventListener('input', (e) => {
       const speed = parseFloat(e.target.value);
       setSpeed(speed);
     });
 
-    // Guardar sección
     document.getElementById('riffloop-btn-save-section').addEventListener('click', () => {
       const input = document.getElementById('riffloop-section-name');
       if (input.value.trim()) {
@@ -461,11 +613,83 @@
       }
     });
 
-    // Hacer arrastrable el panel mediante el encabezado
+    // Dragging para ambos encabezados
     makeDraggable(document.getElementById('riffloop-drag-handle'), overlayEl);
+    makeDraggable(document.getElementById('riffloop-inter-drag-handle'), overlayEl);
+  }
+
+  function setViewMode(mode) {
+    if (mode === 'minimized') {
+      isMinimized = true;
+    } else {
+      isMinimized = false;
+      currentViewMode = mode;
+      lastActiveViewMode = mode;
+    }
+    try {
+      chrome.storage.local.set({ riffloop_view_mode: mode });
+    } catch (e) {}
+    updateUI();
+  }
+
+  function updateInterPlayhead(v) {
+    const playhead = document.getElementById('riffloop-inter-playhead');
+    if (!playhead || !v || !v.duration) return;
+    const percent = (v.currentTime / v.duration) * 100;
+    playhead.style.left = `${Math.min(100, Math.max(0, percent))}%`;
+  }
+
+  function updateInterTrackSpan() {
+    const v = getVideo();
+    const loopSpan = document.getElementById('riffloop-inter-loop-span');
+    if (!loopSpan || !v || !v.duration) return;
+
+    if (pointA !== null && pointB !== null && pointB > pointA) {
+      const leftPercent = (pointA / v.duration) * 100;
+      const widthPercent = ((pointB - pointA) / v.duration) * 100;
+      loopSpan.style.display = 'block';
+      loopSpan.style.left = `${Math.min(100, Math.max(0, leftPercent))}%`;
+      loopSpan.style.width = `${Math.min(100 - leftPercent, Math.max(0.5, widthPercent))}%`;
+    } else {
+      loopSpan.style.display = 'none';
+    }
+  }
+
+  function renderIntermediateSections() {
+    const container = document.getElementById('riffloop-inter-sections-list');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (savedLoops.length === 0) {
+      container.innerHTML = '<span style="font-size:11px; color:rgba(255,255,255,0.35); font-style:italic;">Sin secciones aún</span>';
+      return;
+    }
+
+    const icons = ['🎸', '⚡', '🥁', '🎹', '🎵', '🔥'];
+
+    savedLoops.forEach((sec, idx) => {
+      const pill = document.createElement('button');
+      pill.className = 'riffloop-inter-section-pill';
+      const icon = icons[idx % icons.length];
+      pill.innerHTML = `<span>${icon} ${escapeHtml(sec.name)}</span>`;
+
+      if (pointA !== null && pointB !== null &&
+          Math.abs(sec.start - pointA) < 0.1 &&
+          Math.abs(sec.end - pointB) < 0.1) {
+        pill.classList.add('selected');
+      }
+
+      pill.addEventListener('click', (e) => {
+        e.stopPropagation();
+        loadSection(sec);
+      });
+
+      container.appendChild(pill);
+    });
   }
 
   function makeDraggable(handle, target) {
+    if (!handle) return;
     let isDragging = false;
     let startX = 0;
     let startY = 0;
@@ -473,7 +697,7 @@
     let initialTop = 0;
 
     handle.addEventListener('mousedown', (e) => {
-      if (e.target.tagName.toLowerCase() === 'button') return;
+      if (e.target.tagName.toLowerCase() === 'button' || e.target.closest('button')) return;
       isDragging = true;
       startX = e.clientX;
       startY = e.clientY;
@@ -495,8 +719,8 @@
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
 
-      target.style.left = `${Math.max(10, Math.min(window.innerWidth - 380, initialLeft + dx))}px`;
-      target.style.top = `${Math.max(10, Math.min(window.innerHeight - 100, initialTop + dy))}px`;
+      target.style.left = `${Math.max(10, Math.min(window.innerWidth - 120, initialLeft + dx))}px`;
+      target.style.top = `${Math.max(10, Math.min(window.innerHeight - 80, initialTop + dy))}px`;
     });
 
     window.addEventListener('mouseup', () => {
@@ -509,79 +733,153 @@
     if (!overlayEl) return;
 
     const minView = document.getElementById('riffloop-min-view');
+    const interView = document.getElementById('riffloop-intermediate-view');
     const fullView = document.getElementById('riffloop-full-view');
     const minLed = document.getElementById('riffloop-min-led');
     const minInfo = document.getElementById('riffloop-min-info');
 
-    // Minimizado vs Expandido
+    // Minimizado vs Intermedio vs Expandido
     if (isMinimized) {
-      minView.style.display = 'flex';
-      fullView.style.display = 'none';
+      if (minView) minView.style.display = 'flex';
+      if (interView) interView.style.display = 'none';
+      if (fullView) fullView.style.display = 'none';
+
       if (isLooping && pointA !== null && pointB !== null) {
-        minLed.classList.add('active');
-        minInfo.textContent = `${formatTime(pointA)} ➔ ${formatTime(pointB)}`;
+        if (minLed) minLed.classList.add('active');
+        if (minInfo) minInfo.textContent = `${formatTime(pointA, 1)} ➔ ${formatTime(pointB, 1)}`;
       } else if (pointA !== null) {
-        minLed.classList.remove('active');
-        minInfo.textContent = `A: ${formatTime(pointA)}`;
+        if (minLed) minLed.classList.remove('active');
+        if (minInfo) minInfo.textContent = `A: ${formatTime(pointA, 1)}`;
       } else {
-        minLed.classList.remove('active');
-        minInfo.textContent = 'A-B Inactivo';
+        if (minLed) minLed.classList.remove('active');
+        if (minInfo) minInfo.textContent = 'A-B Inactivo';
       }
       return;
     }
 
-    minView.style.display = 'none';
-    fullView.style.display = 'flex';
-
-    // Tarjeta A
-    const cardA = document.getElementById('riffloop-card-a');
-    const timeA = document.getElementById('riffloop-time-a');
-    timeA.textContent = formatTime(pointA);
-    if (pointA !== null) {
-      cardA.classList.add('has-point');
+    if (currentViewMode === 'intermediate') {
+      if (minView) minView.style.display = 'none';
+      if (interView) interView.style.display = 'flex';
+      if (fullView) fullView.style.display = 'none';
     } else {
-      cardA.classList.remove('has-point');
+      if (minView) minView.style.display = 'none';
+      if (interView) interView.style.display = 'none';
+      if (fullView) fullView.style.display = 'flex';
     }
 
-    // Tarjeta B
-    const cardB = document.getElementById('riffloop-card-b');
-    const timeB = document.getElementById('riffloop-time-b');
-    timeB.textContent = formatTime(pointB);
-    if (pointB !== null) {
-      cardB.classList.add('has-point');
-    } else {
-      cardB.classList.remove('has-point');
-    }
+    // --- 1. Sincronizar Vista Intermedia ---
+    if (interView) {
+      const interCardA = document.getElementById('riffloop-inter-card-a');
+      const interTimeA = document.getElementById('riffloop-inter-time-a');
+      const interBtnSetA = document.getElementById('riffloop-inter-btn-set-a');
+      const interNudgesA = document.getElementById('riffloop-inter-nudges-a');
 
-    // Botón Toggle Loop
-    const toggleBtn = document.getElementById('riffloop-btn-toggle');
-    const toggleIcon = document.getElementById('riffloop-toggle-icon');
-    const toggleText = document.getElementById('riffloop-toggle-text');
-
-    if (isLooping) {
-      toggleBtn.classList.add('active');
-      toggleIcon.textContent = '🔊';
-      toggleText.textContent = 'LOOP ACTIVO';
-    } else {
-      toggleBtn.classList.remove('active');
-      toggleIcon.textContent = '🔁';
-      toggleText.textContent = (pointA !== null && pointB !== null) ? 'Activar Bucle' : 'Loop Desactivado';
-    }
-
-    // Velocidad
-    const speedDisplay = document.getElementById('riffloop-speed-display');
-    const speedSlider = document.getElementById('riffloop-speed-slider');
-    speedDisplay.textContent = `${playbackSpeed.toFixed(2)}x`;
-    speedSlider.value = playbackSpeed;
-
-    document.querySelectorAll('.riffloop-speed-btn').forEach(btn => {
-      const s = parseFloat(btn.dataset.speed);
-      if (Math.abs(s - playbackSpeed) < 0.01) {
-        btn.classList.add('active');
+      interTimeA.textContent = formatTime(pointA, 1);
+      if (pointA !== null) {
+        interCardA.classList.add('has-point');
+        interBtnSetA.style.display = 'none';
+        interNudgesA.style.display = 'flex';
       } else {
-        btn.classList.remove('active');
+        interCardA.classList.remove('has-point');
+        interBtnSetA.style.display = 'inline-block';
+        interNudgesA.style.display = 'none';
       }
-    });
+
+      const interCardB = document.getElementById('riffloop-inter-card-b');
+      const interTimeB = document.getElementById('riffloop-inter-time-b');
+      const interBtnSetB = document.getElementById('riffloop-inter-btn-set-b');
+      const interNudgesB = document.getElementById('riffloop-inter-nudges-b');
+
+      interTimeB.textContent = formatTime(pointB, 1);
+      if (pointB !== null) {
+        interCardB.classList.add('has-point');
+        interBtnSetB.style.display = 'none';
+        interNudgesB.style.display = 'flex';
+      } else {
+        interCardB.classList.remove('has-point');
+        interBtnSetB.style.display = 'inline-block';
+        interNudgesB.style.display = 'none';
+      }
+
+      const interStatusPill = document.getElementById('riffloop-inter-status-pill');
+      const interStatusText = document.getElementById('riffloop-inter-status-text');
+      const interBtnToggle = document.getElementById('riffloop-inter-btn-toggle');
+
+      if (isLooping) {
+        interStatusPill.classList.add('active');
+        interStatusText.textContent = 'BUCLE ACTIVO';
+        interBtnToggle.classList.add('active');
+        interBtnToggle.textContent = 'Desactivar';
+      } else {
+        interStatusPill.classList.remove('active');
+        interStatusText.textContent = 'BUCLE INACTIVO';
+        interBtnToggle.classList.remove('active');
+        interBtnToggle.textContent = 'Activar';
+      }
+
+      document.querySelectorAll('.riffloop-inter-speed-pill').forEach(btn => {
+        const s = parseFloat(btn.dataset.speed);
+        if (Math.abs(s - playbackSpeed) < 0.01) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      updateInterTrackSpan();
+      const v = getVideo();
+      if (v) updateInterPlayhead(v);
+      renderIntermediateSections();
+    }
+
+    // --- 2. Sincronizar Vista Panel Completo ---
+    if (fullView) {
+      const cardA = document.getElementById('riffloop-card-a');
+      const timeA = document.getElementById('riffloop-time-a');
+      timeA.textContent = formatTime(pointA, 2);
+      if (pointA !== null) {
+        cardA.classList.add('has-point');
+      } else {
+        cardA.classList.remove('has-point');
+      }
+
+      const cardB = document.getElementById('riffloop-card-b');
+      const timeB = document.getElementById('riffloop-time-b');
+      timeB.textContent = formatTime(pointB, 2);
+      if (pointB !== null) {
+        cardB.classList.add('has-point');
+      } else {
+        cardB.classList.remove('has-point');
+      }
+
+      const toggleBtn = document.getElementById('riffloop-btn-toggle');
+      const toggleIcon = document.getElementById('riffloop-toggle-icon');
+      const toggleText = document.getElementById('riffloop-toggle-text');
+
+      if (isLooping) {
+        toggleBtn.classList.add('active');
+        toggleIcon.textContent = '🔊';
+        toggleText.textContent = 'LOOP ACTIVO';
+      } else {
+        toggleBtn.classList.remove('active');
+        toggleIcon.textContent = '🔁';
+        toggleText.textContent = (pointA !== null && pointB !== null) ? 'Activar Bucle' : 'Loop Desactivado';
+      }
+
+      const speedDisplay = document.getElementById('riffloop-speed-display');
+      const speedSlider = document.getElementById('riffloop-speed-slider');
+      speedDisplay.textContent = `${playbackSpeed.toFixed(2)}x`;
+      speedSlider.value = playbackSpeed;
+
+      document.querySelectorAll('.riffloop-speed-btn').forEach(btn => {
+        const s = parseFloat(btn.dataset.speed);
+        if (Math.abs(s - playbackSpeed) < 0.01) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
 
     // Lista de secciones guardadas
     const listContainer = document.getElementById('riffloop-saved-list');
@@ -693,8 +991,13 @@
         isLooping,
         playbackSpeed,
         videoId: currentVideoId,
-        savedLoops
+        savedLoops,
+        viewMode: currentViewMode,
+        isMinimized
       });
+    } else if (message.action === 'SET_VIEW_MODE') {
+      setViewMode(message.mode);
+      sendResponse({ success: true });
     } else if (message.action === 'SET_POINT_A') {
       setPointA();
       sendResponse({ success: true });
@@ -723,10 +1026,20 @@
   });
 
   // --- Inicialización y Escucha de Navegación SPA de YouTube ---
-  function init() {
+  async function init() {
     createWidget();
     getVideo();
     loadSavedLoops();
+    try {
+      const res = await chrome.storage.local.get('riffloop_view_mode');
+      if (res && res.riffloop_view_mode) {
+        setViewMode(res.riffloop_view_mode);
+      } else {
+        setViewMode('intermediate');
+      }
+    } catch (e) {
+      setViewMode('intermediate');
+    }
   }
 
   // Si estamos en un video de YouTube
