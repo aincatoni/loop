@@ -1,0 +1,634 @@
+/* ==========================================================================
+   loop — macOS 27 Liquid Glass Design System
+   Ultra-clean translucent frosted glass, refractive specular highlights,
+   continuous curvature and fluid micro-interactions.
+   ========================================================================== */
+
+:root {
+  --loop-glass-bg: rgba(18, 21, 33, 0.58);
+  --loop-glass-bg-hover: rgba(25, 29, 46, 0.68);
+  --loop-glass-border: rgba(255, 255, 255, 0.18);
+  --loop-glass-border-subtle: rgba(255, 255, 255, 0.08);
+  --loop-glass-shine: inset 0 1px 1px 0 rgba(255, 255, 255, 0.32);
+  --loop-glass-shadow: 0 28px 64px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --loop-blur: 32px;
+  --loop-accent-cyan: #00f2fe;
+  --loop-accent-mint: #05df9e;
+  --loop-accent-emerald: #10b981;
+  --loop-accent-amber: #fbbf24;
+  --loop-text-primary: #ffffff;
+  --loop-text-secondary: rgba(255, 255, 255, 0.68);
+  --loop-text-tertiary: rgba(255, 255, 255, 0.42);
+}
+
+#riffloop-overlay {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999999;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  color: var(--loop-text-primary);
+  user-select: none;
+  font-size: 13px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#riffloop-overlay * {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Modo Minimizado: Dynamic Island / Liquid Glass Capsule
+   ========================================================================== */
+.riffloop-minimized {
+  background: rgba(15, 18, 28, 0.62);
+  backdrop-filter: blur(28px) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(105%);
+  border: 1px solid var(--loop-glass-border);
+  border-radius: 9999px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.5), var(--loop-glass-shine);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-minimized:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(22, 26, 42, 0.72);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.riffloop-mini-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-mini-led.active {
+  background: var(--loop-accent-mint);
+  box-shadow: 0 0 12px var(--loop-accent-mint), 0 0 24px rgba(5, 223, 158, 0.45);
+}
+
+.riffloop-mini-title {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.riffloop-mini-info {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--loop-text-secondary);
+}
+
+/* ==========================================================================
+   Panel Completo Expandido: Liquid Glass Window
+   ========================================================================== */
+.riffloop-panel {
+  background: var(--loop-glass-bg);
+  backdrop-filter: blur(var(--loop-blur)) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(var(--loop-blur)) saturate(200%) brightness(105%);
+  border: 1px solid var(--loop-glass-border);
+  border-radius: 24px;
+  width: 360px;
+  box-shadow: var(--loop-glass-shadow), var(--loop-glass-shine);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Header macOS Traffic / Glass Toolbar */
+.riffloop-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--loop-glass-border-subtle);
+  cursor: grab;
+}
+
+.riffloop-header:active {
+  cursor: grabbing;
+}
+
+.riffloop-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.riffloop-logo {
+  font-size: 14px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.riffloop-title {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.riffloop-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.riffloop-icon-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--loop-text-secondary);
+  font-size: 12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--loop-glass-shine);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* Cuerpo del Panel */
+.riffloop-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 540px;
+  overflow-y: auto;
+}
+
+.riffloop-body::-webkit-scrollbar {
+  width: 4px;
+}
+.riffloop-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Tarjetas de Puntos A y B (Frosted Sub-Panels)
+   ========================================================================== */
+.riffloop-ab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.riffloop-point-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--loop-glass-border-subtle);
+  border-radius: 18px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-point-card.has-point {
+  background: linear-gradient(160deg, rgba(0, 242, 254, 0.12) 0%, rgba(5, 223, 158, 0.04) 100%);
+  border-color: rgba(0, 242, 254, 0.35);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 8px 20px -6px rgba(0, 242, 254, 0.15);
+}
+
+.riffloop-point-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--loop-text-tertiary);
+}
+
+.riffloop-time-display {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón Fijar Punto */
+.riffloop-set-btn {
+  width: 100%;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--loop-text-primary);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--loop-glass-shine);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-set-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.riffloop-set-btn:active {
+  transform: scale(0.97);
+}
+
+/* Micro-Ajustes Nudge (+/- 0.1s) */
+.riffloop-nudge-group {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+
+.riffloop-nudge-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--loop-text-secondary);
+  font-size: 10px;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-weight: 600;
+  padding: 4px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.15s ease;
+}
+
+.riffloop-nudge-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.riffloop-nudge-btn:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================================================
+   Botón Principal de Bucle (Liquid Glass Trigger)
+   ========================================================================== */
+.riffloop-main-action {
+  display: flex;
+  gap: 8px;
+}
+
+.riffloop-toggle-btn {
+  flex: 2;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--loop-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--loop-glass-shine);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-toggle-btn.active {
+  background: linear-gradient(135deg, rgba(5, 223, 158, 0.85) 0%, rgba(16, 185, 129, 0.9) 100%);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  box-shadow: 0 10px 28px -4px rgba(5, 223, 158, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.riffloop-toggle-btn:hover {
+  transform: translateY(-1px);
+}
+
+.riffloop-toggle-btn:active {
+  transform: scale(0.98);
+}
+
+.riffloop-secondary-btn {
+  flex: 1;
+  padding: 11px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--loop-text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: var(--loop-glass-shine);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.riffloop-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.riffloop-secondary-btn:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   Velocidad (macOS Segmented Control Glass Track)
+   ========================================================================== */
+.riffloop-speed-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--loop-glass-border-subtle);
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.riffloop-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--loop-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.riffloop-speed-value {
+  color: var(--loop-accent-amber);
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-weight: 700;
+  font-size: 13px;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+/* Segmented Control Track */
+.riffloop-speed-presets {
+  display: flex;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 3px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.riffloop-speed-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--loop-text-secondary);
+  font-size: 11px;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-speed-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.riffloop-speed-btn:hover:not(.active) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Glass Slider */
+.riffloop-slider {
+  width: 100%;
+  accent-color: var(--loop-accent-amber);
+  cursor: pointer;
+  margin: 2px 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Secciones Guardadas (Song Bookmarks Glass)
+   ========================================================================== */
+.riffloop-saved-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--loop-glass-border-subtle);
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.riffloop-save-input-row {
+  display: flex;
+  gap: 6px;
+}
+
+.riffloop-save-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 11px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.2s ease;
+}
+
+.riffloop-save-input:focus {
+  border-color: rgba(0, 242, 254, 0.5);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+}
+
+.riffloop-save-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--loop-glass-shine);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.riffloop-save-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.riffloop-save-btn:active {
+  transform: scale(0.97);
+}
+
+.riffloop-saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.riffloop-saved-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 7px 10px;
+  cursor: grab;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.riffloop-saved-item:active {
+  cursor: grabbing;
+}
+
+.riffloop-saved-item.is-dragging {
+  opacity: 0.35;
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px dashed rgba(0, 242, 254, 0.5);
+  transform: scale(0.97);
+}
+
+.riffloop-saved-item.drag-over-top {
+  border-top: 2px solid var(--loop-accent-cyan);
+  box-shadow: 0 -4px 12px rgba(0, 242, 254, 0.35);
+}
+
+.riffloop-saved-item.drag-over-bottom {
+  border-bottom: 2px solid var(--loop-accent-cyan);
+  box-shadow: 0 4px 12px rgba(0, 242, 254, 0.35);
+}
+
+.riffloop-saved-item:hover:not(.is-dragging) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(2px);
+}
+
+.riffloop-saved-item-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.riffloop-drag-grip {
+  color: var(--loop-text-tertiary);
+  font-size: 13px;
+  margin-right: 7px;
+  cursor: grab;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.45;
+  transition: all 0.15s ease;
+}
+
+.riffloop-saved-item:hover .riffloop-drag-grip {
+  opacity: 1;
+  color: var(--loop-accent-cyan);
+}
+
+.riffloop-saved-item-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--loop-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.riffloop-saved-item-time {
+  font-size: 10px;
+  font-family: ui-monospace, "SF Mono", monospace;
+  color: var(--loop-text-secondary);
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.riffloop-saved-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--loop-text-tertiary);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.riffloop-saved-delete-btn:hover {
+  color: #ff4d4f;
+  background: rgba(255, 77, 79, 0.15);
+}
+
+/* Footer / Keyboard Hints */
+.riffloop-footer {
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.22);
+  border-top: 1px solid var(--loop-glass-border-subtle);
+  font-size: 10px;
+  color: var(--loop-text-tertiary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.riffloop-kbd-shortcut {
+  font-family: ui-monospace, "SF Mono", monospace;
+  color: var(--loop-text-secondary);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1px 5px;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
