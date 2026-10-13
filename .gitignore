@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Node / Dependencies
+node_modules/
+npm-debug.log*
+
+# Release Archives (assets are attached to GitHub Releases)
+*.zip

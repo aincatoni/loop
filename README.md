@@ -1,6 +1,7 @@
 # 🔁 loop — Extensión para loopear y practicar canciones en YouTube
 
-> 🌐 **Landing Page Oficial:** [https://aincatoni.github.io/loop/](https://aincatoni.github.io/loop/)
+> 🌐 **Landing Page Oficial:** [https://aincatoni.github.io/loop/](https://aincatoni.github.io/loop/)  
+> 📦 **Última Versión (Release):** [Descargar loop v1.0.0 (.zip)](https://github.com/aincatoni/loop/releases/latest/download/loop-v1.0.0.zip)
 
 **loop** es una extensión de Google Chrome diseñada para músicos. Te permite crear bucles (loops) de secciones exactas de cualquier video de YouTube, ajustar la velocidad con precisión y guardar partes clave de las canciones (solos, fills, riffs) para practicar con tu instrumento (guitarra, batería, bajo, teclado, etc.).
 
@@ -8,16 +9,25 @@
 
 ## 🚀 Cómo instalar la extensión en Chrome
 
-1. Abre Google Chrome y ve a `chrome://extensions`.
-2. En la esquina superior derecha, activa el **Modo de desarrollador**.
-3. Haz clic en el botón **Cargar descomprimida** (*Load unpacked*) en la esquina superior izquierda.
-4. Selecciona la carpeta donde está este proyecto:
-   ```
-   /Users/aincatoni/code/Ideas/loop
-   ```
-5. ¡Listo! La extensión **loop** ya estará instalada y activa.
+### Opción 1: Descargar el archivo ZIP (Recomendado)
+1. Descarga la última versión empaquetada: [**loop-v1.0.0.zip**](https://github.com/aincatoni/loop/releases/latest/download/loop-v1.0.0.zip) (o desde la sección de [Releases](https://github.com/aincatoni/loop/releases)).
+2. Descomprime el archivo `.zip` en cualquier carpeta de tu ordenador.
+3. Abre Google Chrome e ingresa a `chrome://extensions` en la barra de direcciones.
+4. En la esquina superior derecha, activa el **Modo de desarrollador**.
+5. Haz clic en el botón **Cargar descomprimida** (*Load unpacked*) en la esquina superior izquierda.
+6. Selecciona la carpeta descomprimida `loop`.
+7. ¡Listo! Abre YouTube o recarga la pestaña con `Cmd + R` (o `Ctrl + R`).
 
-> **💡 Nota:** Si ya tienes una pestaña de YouTube abierta, **recárgala con `Cmd + R`** para que el panel de **loop** aparezca sobre el video.
+### Opción 2: Clonar con Git (Para Desarrolladores)
+1. Abre tu terminal y clona el repositorio:
+   ```bash
+   git clone https://github.com/aincatoni/loop.git
+   ```
+2. Abre `chrome://extensions` en Google Chrome.
+3. Activa el **Modo de desarrollador** y haz clic en **Cargar descomprimida**.
+4. Selecciona la carpeta `loop` que acabas de clonar.
+
+> **💡 Nota:** Si ya tienes una pestaña de YouTube abierta, **recárgala con `Cmd + R`** (o `Ctrl + R`) para que el panel de **loop** aparezca sobre el video.
 
 ---
 
