@@ -10,6 +10,41 @@
   if (window.__riffLoopLoaded) return;
   window.__riffLoopLoaded = true;
 
+  // --- Polyfill / Compatibilidad Cross-Browser (Chrome / Safari / Firefox) ---
+  const extRuntime = (typeof browser !== 'undefined' && browser.runtime) ? browser.runtime : (typeof chrome !== 'undefined' ? chrome.runtime : null);
+
+  const extStorage = {
+    async get(key) {
+      try {
+        if (typeof browser !== 'undefined' && browser.storage && browser.storage.local) {
+          return await browser.storage.local.get(key);
+        }
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+          return new Promise((resolve) => {
+            chrome.storage.local.get(key, (items) => resolve(items || {}));
+          });
+        }
+      } catch (err) {
+        console.warn('extStorage.get error:', err);
+      }
+      return {};
+    },
+    async set(items) {
+      try {
+        if (typeof browser !== 'undefined' && browser.storage && browser.storage.local) {
+          return await browser.storage.local.set(items);
+        }
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+          return new Promise((resolve) => {
+            chrome.storage.local.set(items, () => resolve());
+          });
+        }
+      } catch (err) {
+        console.warn('extStorage.set error:', err);
+      }
+    }
+  };
+
   // --- Estado Global ---
   let videoEl = null;
   let currentVideoId = '';
@@ -179,7 +214,7 @@
 
     try {
       const key = `riffloop_${currentVideoId}`;
-      const result = await chrome.storage.local.get(key);
+      const result = await extStorage.get(key);
       savedLoops = result[key] || [];
     } catch (e) {
       savedLoops = [];
@@ -200,7 +235,7 @@
     savedLoops.push(newSection);
     try {
       const key = `riffloop_${currentVideoId}`;
-      await chrome.storage.local.set({ [key]: savedLoops });
+      await extStorage.set({ [key]: savedLoops });
     } catch (e) {
       console.error('Error al guardar sección:', e);
     }
@@ -211,7 +246,7 @@
     savedLoops = savedLoops.filter(item => item.id !== id);
     try {
       const key = `riffloop_${currentVideoId}`;
-      await chrome.storage.local.set({ [key]: savedLoops });
+      await extStorage.set({ [key]: savedLoops });
     } catch (e) {
       console.error('Error al borrar sección:', e);
     }
@@ -224,7 +259,7 @@
     savedLoops.splice(toIndex, 0, moved);
     try {
       const key = `riffloop_${currentVideoId}`;
-      await chrome.storage.local.set({ [key]: savedLoops });
+      await extStorage.set({ [key]: savedLoops });
     } catch (e) {
       console.error('Error al guardar nuevo orden:', e);
     }
@@ -658,7 +693,7 @@
     }
 
     try {
-      chrome.storage.local.set({ riffloop_view_mode: mode });
+      extStorage.set({ riffloop_view_mode: mode });
     } catch (e) {}
     updateUI();
   }
@@ -727,11 +762,11 @@
     let initialLeft = 0;
     let initialTop = 0;
 
-    handle.addEventListener('mousedown', (e) => {
-      if (e.target.tagName.toLowerCase() === 'button' || e.target.closest('button')) return;
+    const onStart = (clientX, clientY, targetEl) => {
+      if (targetEl && (targetEl.tagName.toLowerCase() === 'button' || targetEl.closest('button'))) return false;
       isDragging = true;
-      startX = e.clientX;
-      startY = e.clientY;
+      startX = clientX;
+      startY = clientY;
 
       const rect = target.getBoundingClientRect();
       initialLeft = rect.left;
@@ -741,14 +776,13 @@
       target.style.right = 'auto';
       target.style.left = `${initialLeft}px`;
       target.style.top = `${initialTop}px`;
+      return true;
+    };
 
-      e.preventDefault();
-    });
-
-    window.addEventListener('mousemove', (e) => {
+    const onMove = (clientX, clientY) => {
       if (!isDragging) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
 
       const w = target.offsetWidth || (currentViewMode === 'intermediate' ? 640 : 360);
       const h = target.offsetHeight || 200;
@@ -759,11 +793,40 @@
 
       target.style.left = `${Math.max(minX, Math.min(maxX, initialLeft + dx))}px`;
       target.style.top = `${Math.max(minY, Math.min(maxY, initialTop + dy))}px`;
+    };
+
+    const onEnd = () => {
+      isDragging = false;
+    };
+
+    handle.addEventListener('mousedown', (e) => {
+      if (onStart(e.clientX, e.clientY, e.target)) {
+        e.preventDefault();
+      }
     });
 
-    window.addEventListener('mouseup', () => {
-      isDragging = false;
+    handle.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        if (onStart(e.touches[0].clientX, e.touches[0].clientY, e.target)) {
+          e.preventDefault();
+        }
+      }
+    }, { passive: false });
+
+    window.addEventListener('mousemove', (e) => {
+      onMove(e.clientX, e.clientY);
     });
+
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging && e.touches && e.touches.length === 1) {
+        onMove(e.touches[0].clientX, e.touches[0].clientY);
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    window.addEventListener('mouseup', onEnd);
+    window.addEventListener('touchend', onEnd);
+    window.addEventListener('touchcancel', onEnd);
 
     window.addEventListener('resize', () => {
       if (target.style.left && target.style.left !== 'auto') {
@@ -1031,8 +1094,9 @@
   }
 
   // --- Comunicación con Popup de la Extensión ---
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'GET_STATE') {
+  if (extRuntime && extRuntime.onMessage) {
+    extRuntime.onMessage.addListener((message, sender, sendResponse) => {
+      if (message.action === 'GET_STATE') {
       sendResponse({
         isAvailable: true,
         pointA,
@@ -1072,7 +1136,8 @@
       sendResponse({ success: true });
     }
     return true; // Keep message channel open
-  });
+    });
+  }
 
   // --- Inicialización y Escucha de Navegación SPA de YouTube ---
   async function init() {
@@ -1080,7 +1145,7 @@
     getVideo();
     loadSavedLoops();
     try {
-      const res = await chrome.storage.local.get('riffloop_view_mode');
+      const res = await extStorage.get('riffloop_view_mode');
       if (res && res.riffloop_view_mode) {
         setViewMode(res.riffloop_view_mode);
       } else {

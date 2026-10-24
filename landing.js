@@ -124,4 +124,48 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 3. Installation Tabs (Chrome / Safari macOS / Safari iOS)
+  const installTabs = document.querySelectorAll('.install-tab-btn');
+  const installPanels = document.querySelectorAll('.install-panel');
+
+  function switchInstallTab(tabId) {
+    installTabs.forEach(t => {
+      if (t.getAttribute('data-tab') === tabId) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    });
+
+    installPanels.forEach(p => {
+      if (p.id === `tab-${tabId}`) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+  }
+
+  installTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const tabId = tab.getAttribute('data-tab');
+      if (tabId) switchInstallTab(tabId);
+    });
+  });
+
+  // Platform chips in Hero also switch tabs and scroll to install section
+  const platformChips = document.querySelectorAll('.platform-chip');
+  platformChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const target = chip.getAttribute('data-target-tab');
+      if (target) {
+        switchInstallTab(target);
+        const installSec = document.getElementById('install');
+        if (installSec) {
+          installSec.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
 });

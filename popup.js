@@ -21,24 +21,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     return `${pad(m)}:${pad(s)}.${pad(ms)}`;
   }
 
+  const extApi = typeof browser !== 'undefined' ? browser : chrome;
+
   async function getActiveTab() {
     try {
-      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      return tab;
+      if (extApi.tabs && extApi.tabs.query) {
+        const tabs = await extApi.tabs.query({ active: true, currentWindow: true });
+        return tabs && tabs.length > 0 ? tabs[0] : null;
+      }
     } catch (err) {
       console.error('Error al consultar pestaña activa:', err);
-      return null;
     }
+    return null;
   }
 
   async function sendTabMessage(message) {
     const tab = await getActiveTab();
     if (!tab || !tab.id) return null;
     try {
-      return await chrome.tabs.sendMessage(tab.id, message);
+      if (extApi.tabs && extApi.tabs.sendMessage) {
+        return await extApi.tabs.sendMessage(tab.id, message);
+      }
     } catch (err) {
       return null;
     }
+    return null;
   }
 
   async function refreshState() {

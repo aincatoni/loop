@@ -1053,3 +1053,36 @@
   border-color: var(--loop-accent-mint);
   transform: scale(1.08);
 }
+
+/* ==========================================================================
+   Ajustes Responsivos para Pantallas Pequeñas e iOS Safari
+   ========================================================================== */
+@media (max-width: 640px) {
+  #riffloop-overlay {
+    right: 8px;
+    bottom: max(10px, env(safe-area-inset-bottom, 10px));
+  }
+
+  .riffloop-intermediate {
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+    padding: 12px 14px;
+  }
+
+  .riffloop-panel {
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+  }
+
+  .riffloop-minimized {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .riffloop-inter-ab-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

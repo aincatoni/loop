@@ -1,0 +1,949 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F146AAB33086F951006C68CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146AAB23086F951006C68CF /* AppDelegate.swift */; };
+		F146AAB53086F951006C68CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146AAB43086F951006C68CF /* SceneDelegate.swift */; };
+		F146AAB83086F951006C68CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F146AAB63086F951006C68CF /* LaunchScreen.storyboard */; };
+		F146AABB3086F951006C68CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F146AAB93086F951006C68CF /* Main.storyboard */; };
+		F146AAC43086F951006C68CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146AAC33086F951006C68CF /* AppDelegate.swift */; };
+		F146AAC73086F951006C68CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F146AAC53086F951006C68CF /* Main.storyboard */; };
+		F146AACE3086F951006C68CF /* Loop Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F146AACD3086F951006C68CF /* Loop Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F146AAD83086F951006C68CF /* Loop Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F146AAD73086F951006C68CF /* Loop Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F146AADD3086F951006C68CF /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA23086F951006C68CF /* Main.html */; };
+		F146AADE3086F951006C68CF /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA23086F951006C68CF /* Main.html */; };
+		F146AADF3086F951006C68CF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA43086F951006C68CF /* Icon.png */; };
+		F146AAE03086F951006C68CF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA43086F951006C68CF /* Icon.png */; };
+		F146AAE13086F951006C68CF /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA53086F951006C68CF /* Style.css */; };
+		F146AAE23086F951006C68CF /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA53086F951006C68CF /* Style.css */; };
+		F146AAE33086F951006C68CF /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA63086F951006C68CF /* Script.js */; };
+		F146AAE43086F951006C68CF /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA63086F951006C68CF /* Script.js */; };
+		F146AAE53086F951006C68CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146AAA73086F951006C68CF /* ViewController.swift */; };
+		F146AAE63086F951006C68CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146AAA73086F951006C68CF /* ViewController.swift */; };
+		F146AAE73086F951006C68CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA83086F951006C68CF /* Assets.xcassets */; };
+		F146AAE83086F951006C68CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F146AAA83086F951006C68CF /* Assets.xcassets */; };
+		F146AAE93086F951006C68CF /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146AAAA3086F951006C68CF /* SafariWebExtensionHandler.swift */; };
+		F146AAEA3086F951006C68CF /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146AAAA3086F951006C68CF /* SafariWebExtensionHandler.swift */; };
+		F146AB023086F951006C68CF /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFC3086F951006C68CF /* popup.js */; };
+		F146AB033086F951006C68CF /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFD3086F951006C68CF /* styles.css */; };
+		F146AB043086F951006C68CF /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFE3086F951006C68CF /* popup.html */; };
+		F146AB053086F951006C68CF /* icons in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFF3086F951006C68CF /* icons */; };
+		F146AB063086F951006C68CF /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = F146AB003086F951006C68CF /* manifest.json */; };
+		F146AB073086F951006C68CF /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = F146AB013086F951006C68CF /* content.js */; };
+		F146AB083086F951006C68CF /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFC3086F951006C68CF /* popup.js */; };
+		F146AB093086F951006C68CF /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFD3086F951006C68CF /* styles.css */; };
+		F146AB0A3086F951006C68CF /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFE3086F951006C68CF /* popup.html */; };
+		F146AB0B3086F951006C68CF /* icons in Resources */ = {isa = PBXBuildFile; fileRef = F146AAFF3086F951006C68CF /* icons */; };
+		F146AB0C3086F951006C68CF /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = F146AB003086F951006C68CF /* manifest.json */; };
+		F146AB0D3086F951006C68CF /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = F146AB013086F951006C68CF /* content.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F146AACF3086F951006C68CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F146AA9C3086F951006C68CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F146AACC3086F951006C68CF;
+			remoteInfo = "Loop Extension (iOS)";
+		};
+		F146AAD93086F951006C68CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F146AA9C3086F951006C68CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F146AAD63086F951006C68CF;
+			remoteInfo = "Loop Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F146AAF03086F951006C68CF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				F146AACE3086F951006C68CF /* Loop Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+		F146AAF73086F951006C68CF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				F146AAD83086F951006C68CF /* Loop Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F146AAA33086F951006C68CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		F146AAA43086F951006C68CF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		F146AAA53086F951006C68CF /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		F146AAA63086F951006C68CF /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		F146AAA73086F951006C68CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F146AAA83086F951006C68CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F146AAAA3086F951006C68CF /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		F146AAAF3086F951006C68CF /* Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F146AAB23086F951006C68CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F146AAB43086F951006C68CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F146AAB73086F951006C68CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F146AABA3086F951006C68CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F146AABC3086F951006C68CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F146AAC13086F951006C68CF /* Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F146AAC33086F951006C68CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F146AAC63086F951006C68CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F146AAC83086F951006C68CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F146AACD3086F951006C68CF /* Loop Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Loop Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F146AAD23086F951006C68CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F146AAD73086F951006C68CF /* Loop Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Loop Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F146AADC3086F951006C68CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F146AAFC3086F951006C68CF /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = Resources/popup.js; sourceTree = "<group>"; };
+		F146AAFD3086F951006C68CF /* styles.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = styles.css; path = Resources/styles.css; sourceTree = "<group>"; };
+		F146AAFE3086F951006C68CF /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = Resources/popup.html; sourceTree = "<group>"; };
+		F146AAFF3086F951006C68CF /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = Resources/icons; sourceTree = "<group>"; };
+		F146AB003086F951006C68CF /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = Resources/manifest.json; sourceTree = "<group>"; };
+		F146AB013086F951006C68CF /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = Resources/content.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F146AAAC3086F951006C68CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		F146AABE3086F951006C68CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		F146AACA3086F951006C68CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		F146AAD43086F951006C68CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F146AA9B3086F951006C68CF = {
+			isa = PBXGroup;
+			children = (
+				F146AAA03086F951006C68CF /* Shared (App) */,
+				F146AAA93086F951006C68CF /* Shared (Extension) */,
+				F146AAB13086F951006C68CF /* iOS (App) */,
+				F146AAC23086F951006C68CF /* macOS (App) */,
+				F146AAD13086F951006C68CF /* iOS (Extension) */,
+				F146AADB3086F951006C68CF /* macOS (Extension) */,
+				F146AAB03086F951006C68CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F146AAA03086F951006C68CF /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAA73086F951006C68CF /* ViewController.swift */,
+				F146AAA83086F951006C68CF /* Assets.xcassets */,
+				F146AAA13086F951006C68CF /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		F146AAA13086F951006C68CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAA23086F951006C68CF /* Main.html */,
+				F146AAA43086F951006C68CF /* Icon.png */,
+				F146AAA53086F951006C68CF /* Style.css */,
+				F146AAA63086F951006C68CF /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F146AAA93086F951006C68CF /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAFB3086F951006C68CF /* Resources */,
+				F146AAAA3086F951006C68CF /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		F146AAB03086F951006C68CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAAF3086F951006C68CF /* Loop.app */,
+				F146AAC13086F951006C68CF /* Loop.app */,
+				F146AACD3086F951006C68CF /* Loop Extension.appex */,
+				F146AAD73086F951006C68CF /* Loop Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F146AAB13086F951006C68CF /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAB23086F951006C68CF /* AppDelegate.swift */,
+				F146AAB43086F951006C68CF /* SceneDelegate.swift */,
+				F146AAB63086F951006C68CF /* LaunchScreen.storyboard */,
+				F146AAB93086F951006C68CF /* Main.storyboard */,
+				F146AABC3086F951006C68CF /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		F146AAC23086F951006C68CF /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAC33086F951006C68CF /* AppDelegate.swift */,
+				F146AAC53086F951006C68CF /* Main.storyboard */,
+				F146AAC83086F951006C68CF /* Info.plist */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		F146AAD13086F951006C68CF /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAD23086F951006C68CF /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		F146AADB3086F951006C68CF /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				F146AADC3086F951006C68CF /* Info.plist */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		F146AAFB3086F951006C68CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F146AAFC3086F951006C68CF /* popup.js */,
+				F146AAFD3086F951006C68CF /* styles.css */,
+				F146AAFE3086F951006C68CF /* popup.html */,
+				F146AAFF3086F951006C68CF /* icons */,
+				F146AB003086F951006C68CF /* manifest.json */,
+				F146AB013086F951006C68CF /* content.js */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F146AAAE3086F951006C68CF /* Loop (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F146AAF13086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop (iOS)" */;
+			buildPhases = (
+				F146AAAB3086F951006C68CF /* Sources */,
+				F146AAAC3086F951006C68CF /* Frameworks */,
+				F146AAAD3086F951006C68CF /* Resources */,
+				F146AAF03086F951006C68CF /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F146AAD03086F951006C68CF /* PBXTargetDependency */,
+			);
+			name = "Loop (iOS)";
+			productName = "Loop (iOS)";
+			productReference = F146AAAF3086F951006C68CF /* Loop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F146AAC03086F951006C68CF /* Loop (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F146AAF83086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop (macOS)" */;
+			buildPhases = (
+				F146AABD3086F951006C68CF /* Sources */,
+				F146AABE3086F951006C68CF /* Frameworks */,
+				F146AABF3086F951006C68CF /* Resources */,
+				F146AAF73086F951006C68CF /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F146AADA3086F951006C68CF /* PBXTargetDependency */,
+			);
+			name = "Loop (macOS)";
+			productName = "Loop (macOS)";
+			productReference = F146AAC13086F951006C68CF /* Loop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F146AACC3086F951006C68CF /* Loop Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F146AAED3086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop Extension (iOS)" */;
+			buildPhases = (
+				F146AAC93086F951006C68CF /* Sources */,
+				F146AACA3086F951006C68CF /* Frameworks */,
+				F146AACB3086F951006C68CF /* Resources */,
+			);
+			buildRules = (
+			);
+			name = "Loop Extension (iOS)";
+			productName = "Loop Extension (iOS)";
+			productReference = F146AACD3086F951006C68CF /* Loop Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		F146AAD63086F951006C68CF /* Loop Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F146AAF43086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop Extension (macOS)" */;
+			buildPhases = (
+				F146AAD33086F951006C68CF /* Sources */,
+				F146AAD43086F951006C68CF /* Frameworks */,
+				F146AAD53086F951006C68CF /* Resources */,
+			);
+			buildRules = (
+			);
+			name = "Loop Extension (macOS)";
+			productName = "Loop Extension (macOS)";
+			productReference = F146AAD73086F951006C68CF /* Loop Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F146AA9C3086F951006C68CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					F146AAAE3086F951006C68CF = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					F146AAC03086F951006C68CF = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					F146AACC3086F951006C68CF = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					F146AAD63086F951006C68CF = {
+						CreatedOnToolsVersion = 27.1;
+					};
+				};
+			};
+			buildConfigurationList = F146AA9F3086F951006C68CF /* Build configuration list for PBXProject "Loop" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F146AA9B3086F951006C68CF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F146AAB03086F951006C68CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F146AAAE3086F951006C68CF /* Loop (iOS) */,
+				F146AAC03086F951006C68CF /* Loop (macOS) */,
+				F146AACC3086F951006C68CF /* Loop Extension (iOS) */,
+				F146AAD63086F951006C68CF /* Loop Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F146AAAD3086F951006C68CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				F146AADF3086F951006C68CF /* Icon.png in Resources */,
+				F146AAB83086F951006C68CF /* LaunchScreen.storyboard in Resources */,
+				F146AADD3086F951006C68CF /* Main.html in Resources */,
+				F146AAE33086F951006C68CF /* Script.js in Resources */,
+				F146AAE73086F951006C68CF /* Assets.xcassets in Resources */,
+				F146AABB3086F951006C68CF /* Main.storyboard in Resources */,
+				F146AAE13086F951006C68CF /* Style.css in Resources */,
+			);
+		};
+		F146AABF3086F951006C68CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				F146AAE03086F951006C68CF /* Icon.png in Resources */,
+				F146AAE23086F951006C68CF /* Style.css in Resources */,
+				F146AAC73086F951006C68CF /* Main.storyboard in Resources */,
+				F146AAE43086F951006C68CF /* Script.js in Resources */,
+				F146AAE83086F951006C68CF /* Assets.xcassets in Resources */,
+				F146AADE3086F951006C68CF /* Main.html in Resources */,
+			);
+		};
+		F146AACB3086F951006C68CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				F146AB0D3086F951006C68CF /* content.js in Resources */,
+				F146AB083086F951006C68CF /* popup.js in Resources */,
+				F146AB0B3086F951006C68CF /* icons in Resources */,
+				F146AB0C3086F951006C68CF /* manifest.json in Resources */,
+				F146AB0A3086F951006C68CF /* popup.html in Resources */,
+				F146AB093086F951006C68CF /* styles.css in Resources */,
+			);
+		};
+		F146AAD53086F951006C68CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				F146AB073086F951006C68CF /* content.js in Resources */,
+				F146AB023086F951006C68CF /* popup.js in Resources */,
+				F146AB053086F951006C68CF /* icons in Resources */,
+				F146AB063086F951006C68CF /* manifest.json in Resources */,
+				F146AB043086F951006C68CF /* popup.html in Resources */,
+				F146AB033086F951006C68CF /* styles.css in Resources */,
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F146AAAB3086F951006C68CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				F146AAE53086F951006C68CF /* ViewController.swift in Sources */,
+				F146AAB33086F951006C68CF /* AppDelegate.swift in Sources */,
+				F146AAB53086F951006C68CF /* SceneDelegate.swift in Sources */,
+			);
+		};
+		F146AABD3086F951006C68CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				F146AAE63086F951006C68CF /* ViewController.swift in Sources */,
+				F146AAC43086F951006C68CF /* AppDelegate.swift in Sources */,
+			);
+		};
+		F146AAC93086F951006C68CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				F146AAE93086F951006C68CF /* SafariWebExtensionHandler.swift in Sources */,
+			);
+		};
+		F146AAD33086F951006C68CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				F146AAEA3086F951006C68CF /* SafariWebExtensionHandler.swift in Sources */,
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F146AAD03086F951006C68CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F146AACC3086F951006C68CF /* Loop Extension (iOS) */;
+			targetProxy = F146AACF3086F951006C68CF /* PBXContainerItemProxy */;
+		};
+		F146AADA3086F951006C68CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F146AAD63086F951006C68CF /* Loop Extension (macOS) */;
+			targetProxy = F146AAD93086F951006C68CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F146AAA23086F951006C68CF /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F146AAA33086F951006C68CF /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		F146AAB63086F951006C68CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F146AAB73086F951006C68CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F146AAB93086F951006C68CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F146AABA3086F951006C68CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F146AAC53086F951006C68CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F146AAC63086F951006C68CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F146AAEB3086F951006C68CF /* Debug configuration for PBXProject "Loop" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F146AAEC3086F951006C68CF /* Release configuration for PBXProject "Loop" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		F146AAEE3086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop Extension (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Loop Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop.Extension;
+				PRODUCT_NAME = "Loop Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F146AAEF3086F951006C68CF /* Release configuration for PBXNativeTarget "Loop Extension (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Loop Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop.Extension;
+				PRODUCT_NAME = "Loop Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F146AAF23086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Loop;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop;
+				PRODUCT_NAME = Loop;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F146AAF33086F951006C68CF /* Release configuration for PBXNativeTarget "Loop (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Loop;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop;
+				PRODUCT_NAME = Loop;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F146AAF53086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop Extension (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Loop Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop.Extension;
+				PRODUCT_NAME = "Loop Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F146AAF63086F951006C68CF /* Release configuration for PBXNativeTarget "Loop Extension (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Loop Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop.Extension;
+				PRODUCT_NAME = "Loop Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F146AAF93086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Loop;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop;
+				PRODUCT_NAME = Loop;
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F146AAFA3086F951006C68CF /* Release configuration for PBXNativeTarget "Loop (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Loop;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aincatoni.loop;
+				PRODUCT_NAME = Loop;
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F146AA9F3086F951006C68CF /* Build configuration list for PBXProject "Loop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F146AAEB3086F951006C68CF /* Debug configuration for PBXProject "Loop" */,
+				F146AAEC3086F951006C68CF /* Release configuration for PBXProject "Loop" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		F146AAED3086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F146AAEE3086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop Extension (iOS)" */,
+				F146AAEF3086F951006C68CF /* Release configuration for PBXNativeTarget "Loop Extension (iOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		F146AAF13086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F146AAF23086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop (iOS)" */,
+				F146AAF33086F951006C68CF /* Release configuration for PBXNativeTarget "Loop (iOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		F146AAF43086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F146AAF53086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop Extension (macOS)" */,
+				F146AAF63086F951006C68CF /* Release configuration for PBXNativeTarget "Loop Extension (macOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		F146AAF83086F951006C68CF /* Build configuration list for PBXNativeTarget "Loop (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F146AAF93086F951006C68CF /* Debug configuration for PBXNativeTarget "Loop (macOS)" */,
+				F146AAFA3086F951006C68CF /* Release configuration for PBXNativeTarget "Loop (macOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F146AA9C3086F951006C68CF /* Project object */;
+	validationLevel = 1;
+}

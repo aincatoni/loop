@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>loop — Practica canciones en YouTube con bucles A-B precisos</title>
-  <meta name="description" content="Extensión de Chrome para músicos: crea bucles A-B exactos, ajusta la velocidad sin perder afinación, guarda secciones y practica manos libres con pedaleras o atajos.">
+  <title>loop — Practica canciones en YouTube con bucles A-B precisos (Chrome &amp; Safari)</title>
+  <meta name="description" content="Extensión para Google Chrome y Apple Safari (macOS / iOS) para músicos: crea bucles A-B exactos, ajusta la velocidad sin perder afinación, guarda secciones y practica manos libres o táctil.">
   <meta property="og:title" content="loop — Domina cada riff, solo y compás en YouTube">
-  <meta property="og:description" content="Crea bucles A-B precisos, ajusta la velocidad y guarda secciones para practicar guitarra, batería o cualquier instrumento.">
+  <meta property="og:description" content="Crea bucles A-B precisos, ajusta la velocidad y guarda secciones para practicar en YouTube con Chrome y Safari.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="icons/icon-48.png">
   <link rel="stylesheet" href="landing.css">
@@ -59,7 +59,7 @@
     <div class="container">
       <div class="hero-pill">
         <span class="pulse-dot"></span>
-        v1.0.0 • Extensión de Chrome para Músicos
+        v1.0.0 • Extensión para Google Chrome &amp; Apple Safari (macOS / iOS)
       </div>
 
       <h1>
@@ -68,9 +68,8 @@
 
       <p>
         Diseñado especialmente para guitarristas, bateristas, bajistas y tecladistas.
-        Crea bucles A-B precisos, baja la velocidad sin perder afinación, guarda tus secciones por canción y practica manos libres con pedaleras o atajos de teclado.
+        Crea bucles A-B precisos, baja la velocidad sin perder afinación, guarda tus secciones por canción y practica manos libres con pedaleras, atajos de teclado o controles táctiles en Chrome y Safari.
       </p>
-
       <div class="hero-cta">
         <a href="#install" class="btn btn-primary btn-lg">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -85,7 +84,7 @@
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Descargar Extensión (.zip)
+          Descargar para Chrome (.zip)
         </a>
       </div>
 
@@ -93,6 +92,26 @@
         <span>$ git clone https://github.com/aincatoni/loop.git</span>
         <button class="clone-btn copy-cmd-btn" data-clipboard="git clone https://github.com/aincatoni/loop.git">
           Copiar
+        </button>
+      </div>
+      <div class="platform-chips">
+        <button class="platform-chip" data-target-tab="chrome" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
+          </svg>
+          Google Chrome
+        </button>
+        <button class="platform-chip" data-target-tab="safari-mac" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
+          Safari (macOS)
+        </button>
+        <button class="platform-chip" data-target-tab="safari-ios" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+          Safari (iOS / iPadOS)
         </button>
       </div>
     </div>
@@ -312,7 +331,7 @@
           </div>
           <h3>100% Privado y Local</h3>
           <p>
-            Cero telemetría, cero servidores externos, sin registros ni publicidad. Todo el guardado vive exclusivamente en el almacenamiento local de tu propio navegador Chrome.
+            Cero telemetría, cero servidores externos, sin registros ni publicidad. Todo el guardado vive exclusivamente en el almacenamiento local de tu propio navegador (Chrome o Safari).
           </p>
         </div>
       </div>
@@ -385,11 +404,33 @@
     <div class="container">
       <div class="section-head">
         <div class="section-tag">Instalación en 1 minuto</div>
-        <h2>Cómo instalar loop en Google Chrome</h2>
-        <p>Actualmente disponible para cargar de forma rápida y gratuita en Modo Desarrollador.</p>
+        <h2>Cómo instalar loop</h2>
+        <p>Elige tu navegador o plataforma para comenzar a practicar gratis:</p>
       </div>
 
-      <div class="steps-wrap">
+      <div class="install-tabs">
+        <button class="install-tab-btn active" data-tab="chrome" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
+          </svg>
+          Google Chrome
+        </button>
+        <button class="install-tab-btn" data-tab="safari-mac" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
+          Safari (macOS)
+        </button>
+        <button class="install-tab-btn" data-tab="safari-ios" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+          Safari (iOS / iPhone)
+        </button>
+      </div>
+
+      <!-- Tab Chrome -->
+      <div class="steps-wrap install-panel active" id="tab-chrome">
         <div class="step-card">
           <div class="step-num">01</div>
           <h3>Obtén el proyecto</h3>
@@ -431,7 +472,89 @@
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Tab Safari macOS -->
+      <div class="steps-wrap install-panel" id="tab-safari-mac">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Clona el repositorio</h3>
+          <p>Abre tu terminal y clona el proyecto en tu Mac. Requiere tener Xcode o Command Line Tools instalados.</p>
+          <div class="code-snippet" style="margin-bottom: 12px;">
+            <span>git clone https://github.com/aincatoni/loop.git</span>
+            <button class="clone-btn copy-cmd-btn" data-clipboard="git clone https://github.com/aincatoni/loop.git">Copiar</button>
+          </div>
+          <div class="code-snippet">
+            <span>cd loop</span>
+            <button class="clone-btn copy-cmd-btn" data-clipboard="cd loop">Copiar</button>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Compila con 1 comando</h3>
+          <p>
+            Ejecuta el script de construcción rápida. Compila la app complementaria nativa y la registra en Safari en segundos:
+          </p>
+          <div class="code-snippet" style="margin-bottom: 12px;">
+            <span>./build-safari.sh</span>
+            <button class="clone-btn copy-cmd-btn" data-clipboard="./build-safari.sh">Copiar</button>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-tertiary); margin: 0;">
+            (O abre <code>Safari/Loop.xcodeproj</code> en Xcode y presiona <code>Cmd + R</code> con el esquema macOS).
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Activa en Safari</h3>
+          <p>
+            1. En Safari: <strong>Ajustes ➔ Avanzado</strong>, marca <em>Mostrar funciones para desarrolladores</em>.<br>
+            2. En el menú superior <strong>Desarrollo</strong>, activa <strong>Permitir extensiones no firmadas</strong>.<br>
+            3. En <strong>Ajustes ➔ Extensiones</strong>, marca <strong>loop</strong> y otorga permisos para <code>youtube.com</code>.
+          </p>
+          <div class="code-snippet" style="color: var(--accent-cyan); font-weight: 600;">
+            <span>✓ Extensión activa en Safari macOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Safari iOS -->
+      <div class="steps-wrap install-panel" id="tab-safari-ios">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Modo desarrollador en iPhone</h3>
+          <p>
+            Conecta tu iPhone/iPad a tu Mac. En tu dispositivo ve a:
+            <strong>Ajustes ➔ Privacidad y seguridad ➔ Modo de desarrollador</strong>, actívalo y reinicia cuando lo solicite.
+          </p>
+          <div class="code-snippet">
+            <span>Ajustes > Privacidad > Modo desarrollador</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Instalar desde Xcode</h3>
+          <p>
+            Abre el proyecto en Xcode, selecciona el esquema <strong>Loop (iOS)</strong> y elige tu iPhone conectado. Asigna tu Apple ID personal gratuito en <em>Signing &amp; Capabilities</em> y pulsa <strong>Run (Cmd + R)</strong>.
+          </p>
+          <div class="code-snippet">
+            <span>open Safari/Loop.xcodeproj</span>
+            <button class="clone-btn copy-cmd-btn" data-clipboard="open Safari/Loop.xcodeproj">Copiar</button>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Activar en Safari iOS</h3>
+          <p>
+            En tu iPhone ve a <strong>Ajustes ➔ Safari ➔ Extensiones</strong>, activa <strong>loop</strong> y permite en <code>youtube.com</code>. ¡Abre YouTube en Safari móvil y practica con controles táctiles!
+          </p>
+          <div class="code-snippet" style="color: var(--accent-mint); font-weight: 600;">
+            <span>✓ Práctica táctil en iPhone y iPad</span>
+          </div>
+        </div>
+      </div>
   </section>
 
   <!-- Footer -->
@@ -445,7 +568,7 @@
         <a href="https://github.com/aincatoni/loop" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
       </div>
       <p>
-        <strong>loop</strong> es un proyecto libre y de código abierto desarrollado para que practicar canciones sea más fácil e intuitivo.
+        <strong>loop</strong> es un proyecto libre y de código abierto desarrollado para que practicar canciones sea más fácil e intuitivo en Chrome y Safari.
       </p>
       <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.6;">
         Desplegado en GitHub Pages con GitHub Actions &bull; Cero rastreo &bull; 100% Local
