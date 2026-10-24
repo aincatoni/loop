@@ -432,20 +432,27 @@
           </div>
         </div>
 
-        <!-- Fila de Tempo -->
-        <div class="riffloop-inter-tempo-row">
-          <div class="riffloop-inter-tempo-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <span>Velocidad de estudio:</span>
+        <!-- Fila de Tempo / Velocidad -->
+        <div class="riffloop-inter-tempo-box">
+          <div class="riffloop-inter-tempo-row">
+            <div class="riffloop-inter-tempo-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Velocidad de estudio:</span>
+              <span class="riffloop-inter-speed-value" id="riffloop-inter-speed-display">1.00x</span>
+            </div>
+            <div class="riffloop-inter-tempo-presets">
+              <button class="riffloop-inter-speed-pill" data-speed="0.5">0.5x</button>
+              <button class="riffloop-inter-speed-pill" data-speed="0.75">0.75x</button>
+              <button class="riffloop-inter-speed-pill" data-speed="0.85">0.85x</button>
+              <button class="riffloop-inter-speed-pill" data-speed="0.9">0.9x</button>
+              <button class="riffloop-inter-speed-pill" data-speed="1.0">1.0x</button>
+            </div>
           </div>
-          <div class="riffloop-inter-tempo-presets">
-            <button class="riffloop-inter-speed-pill" data-speed="0.5">0.5x</button>
-            <button class="riffloop-inter-speed-pill" data-speed="0.75">0.75x</button>
-            <button class="riffloop-inter-speed-pill" data-speed="0.85">0.85x</button>
-            <button class="riffloop-inter-speed-pill" data-speed="1.0">1.0x</button>
+          <div class="riffloop-inter-slider-row">
+            <input type="range" class="riffloop-slider riffloop-inter-slider" id="riffloop-inter-speed-slider" min="0.25" max="1.5" step="0.05" value="1.0">
           </div>
         </div>
 
@@ -605,6 +612,14 @@
         setSpeed(speed);
       });
     });
+    const interSpeedSlider = document.getElementById('riffloop-inter-speed-slider');
+    if (interSpeedSlider) {
+      interSpeedSlider.addEventListener('input', (e) => {
+        const speed = parseFloat(e.target.value);
+        setSpeed(speed);
+      });
+    }
+
 
     const interTrack = document.getElementById('riffloop-inter-track');
     if (interTrack) {
@@ -927,6 +942,15 @@
         interStatusText.textContent = 'BUCLE INACTIVO';
         interBtnToggle.classList.remove('active');
         interBtnToggle.textContent = 'Activar';
+      }
+
+      const interSpeedDisplay = document.getElementById('riffloop-inter-speed-display');
+      const interSpeedSlider = document.getElementById('riffloop-inter-speed-slider');
+      if (interSpeedDisplay) {
+        interSpeedDisplay.textContent = `${playbackSpeed.toFixed(2)}x`;
+      }
+      if (interSpeedSlider) {
+        interSpeedSlider.value = playbackSpeed;
       }
 
       document.querySelectorAll('.riffloop-inter-speed-pill').forEach(btn => {

@@ -206,19 +206,26 @@
           </div>
 
           <!-- Tempo Controls -->
-          <div class="tempo-row">
-            <div class="tempo-label">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <span>Velocidad de estudio:</span>
+          <div class="mockup-tempo-box" style="margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px;">
+            <div class="tempo-row" style="margin: 0; padding: 0; border: none;">
+              <div class="tempo-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Velocidad de estudio:</span>
+                <span class="mockup-speed-val" style="color: var(--accent-amber); font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; margin-left: 2px;">0.85x</span>
+              </div>
+              <div class="tempo-presets">
+                <button class="tempo-pill mockup-tempo-pill" data-speed="0.50">0.5x</button>
+                <button class="tempo-pill mockup-tempo-pill" data-speed="0.75">0.75x</button>
+                <button class="tempo-pill mockup-tempo-pill active" data-speed="0.85">0.85x</button>
+                <button class="tempo-pill mockup-tempo-pill" data-speed="0.90">0.9x</button>
+                <button class="tempo-pill mockup-tempo-pill" data-speed="1.00">1.0x</button>
+              </div>
             </div>
-            <div class="tempo-presets">
-              <button class="tempo-pill mockup-tempo-pill" data-speed="0.50">0.5x</button>
-              <button class="tempo-pill mockup-tempo-pill" data-speed="0.75">0.75x</button>
-              <button class="tempo-pill mockup-tempo-pill active" data-speed="0.85">0.85x</button>
-              <button class="tempo-pill mockup-tempo-pill" data-speed="1.00">1.0x</button>
+            <div style="display: flex; align-items: center; width: 100%;">
+              <input type="range" class="mockup-speed-slider" min="0.25" max="1.5" step="0.05" value="0.85" style="width: 100%; height: 4px; accent-color: var(--accent-amber); cursor: pointer; background: rgba(255, 255, 255, 0.1); border-radius: 4px; margin: 0;">
             </div>
           </div>
 

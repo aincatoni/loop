@@ -929,12 +929,18 @@
 }
 
 /* Fila de velocidad / tempo */
+.riffloop-inter-tempo-box {
+  padding-top: 10px;
+  border-top: 1px solid var(--loop-glass-border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .riffloop-inter-tempo-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid var(--loop-glass-border-subtle);
 }
 
 .riffloop-inter-tempo-label {
@@ -945,6 +951,27 @@
   gap: 6px;
 }
 
+.riffloop-inter-speed-value {
+  color: var(--loop-accent-amber);
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-weight: 700;
+  font-size: 12px;
+  margin-left: 2px;
+}
+
+.riffloop-inter-slider-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.riffloop-inter-slider {
+  width: 100%;
+  accent-color: var(--loop-accent-amber);
+  cursor: pointer;
+  margin: 0;
+  height: 4px;
+}
 .riffloop-inter-tempo-presets {
   display: flex;
   gap: 6px;
@@ -1084,5 +1111,9 @@
   .riffloop-inter-ab-row {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+  .riffloop-inter-tempo-row {
+    flex-wrap: wrap;
+    gap: 6px;
   }
 }

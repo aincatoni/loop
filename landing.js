@@ -29,27 +29,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const tempoPills = document.querySelectorAll('.mockup-tempo-pill');
   const statusBadge = document.querySelector('.mockup-status-badge');
   const toggleLoopBtn = document.querySelector('.mockup-toggle-loop');
-
   let isLoopActive = true;
   let currentSpeed = 0.85;
+  const speedSlider = document.querySelector('.mockup-speed-slider');
+  const speedValDisplay = document.querySelector('.mockup-speed-val');
+
+  function updateMockupSpeed(speed) {
+    currentSpeed = speed;
+    if (speedSlider) speedSlider.value = speed;
+    if (speedValDisplay) speedValDisplay.textContent = `${speed.toFixed(2)}x`;
+
+    tempoPills.forEach(p => {
+      const s = parseFloat(p.getAttribute('data-speed') || '1.0');
+      if (Math.abs(s - speed) < 0.01) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+
+    if (playhead && isLoopActive) {
+      const baseDuration = 4.0;
+      const newDuration = (baseDuration / currentSpeed).toFixed(2);
+      playhead.style.animationDuration = `${newDuration}s`;
+    }
+  }
 
   // Tempo Pill clicks
   tempoPills.forEach(pill => {
     pill.addEventListener('click', () => {
-      tempoPills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-
       const speed = parseFloat(pill.getAttribute('data-speed') || '1.0');
-      currentSpeed = speed;
-
-      // Adjust CSS animation duration based on speed
-      if (playhead && isLoopActive) {
-        const baseDuration = 4.0;
-        const newDuration = (baseDuration / currentSpeed).toFixed(2);
-        playhead.style.animationDuration = `${newDuration}s`;
-      }
+      updateMockupSpeed(speed);
     });
   });
+
+  if (speedSlider) {
+    speedSlider.addEventListener('input', (e) => {
+      const speed = parseFloat(e.target.value);
+      updateMockupSpeed(speed);
+    });
+  }
 
   // Loop Toggle
   if (toggleLoopBtn) {
