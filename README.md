@@ -1,7 +1,7 @@
 # 🔁 loop — Extensión para loopear y practicar canciones en YouTube
 
 > 🌐 **Landing Page Oficial:** [https://aincatoni.github.io/loop/](https://aincatoni.github.io/loop/)  
-> 📦 **Última Versión (Release):** [Descargar loop v1.0.0 (.zip)](https://github.com/aincatoni/loop/releases/latest/download/loop-v1.0.0.zip)
+> 📦 **Última Versión (Release):** [Descargar loop v1.1.0 (.zip)](https://github.com/aincatoni/loop/releases/latest/download/loop-v1.1.0.zip)
 
 **loop** es una extensión para **Google Chrome** y **Apple Safari** (macOS e iOS) diseñada para músicos. Te permite crear bucles (loops) de secciones exactas de cualquier video de YouTube, ajustar la velocidad con precisión y guardar partes clave de las canciones (solos, fills, riffs) para practicar con tu instrumento (guitarra, batería, bajo, teclado, etc.).
 
@@ -16,7 +16,7 @@
 ## 🚀 Cómo instalar la extensión en Chrome
 
 ### Opción 1: Descargar el archivo ZIP (Recomendado)
-1. Descarga la última versión empaquetada: [**loop-v1.0.0.zip**](https://github.com/aincatoni/loop/releases/latest/download/loop-v1.0.0.zip) (o desde la sección de [Releases](https://github.com/aincatoni/loop/releases)).
+1. Descarga la última versión empaquetada: [**loop-v1.1.0.zip**](https://github.com/aincatoni/loop/releases/latest/download/loop-v1.1.0.zip) (o desde la sección de [Releases](https://github.com/aincatoni/loop/releases)).
 2. Descomprime el archivo `.zip` en cualquier carpeta de tu ordenador.
 3. Abre Google Chrome e ingresa a `chrome://extensions` en la barra de direcciones.
 4. En la esquina superior derecha, activa el **Modo de desarrollador**.

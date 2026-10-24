@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "loop",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Crea bucles A-B precisos, ajusta la velocidad y guarda secciones para practicar guitarra, batería y cualquier instrumento en YouTube.",
   "action": {
     "default_popup": "popup.html",
